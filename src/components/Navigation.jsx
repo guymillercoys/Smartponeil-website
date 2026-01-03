@@ -62,7 +62,9 @@ function Navigation() {
             <div className="language-dropdown">
               <button className="language-btn" aria-label="Language">
                 <span className="language-icon">🌐</span>
-                <span className="language-text">{language === 'he' ? 'עברית' : language === 'en' ? 'English' : 'ไทย'}</span>
+                <span className="language-text">
+                  {language === 'he' ? '🇮🇱 עברית' : language === 'en' ? '🇬🇧 English' : '🇹🇭 ไทย'}
+                </span>
                 <span className="dropdown-arrow">▼</span>
               </button>
               <div className="language-options">
@@ -70,19 +72,19 @@ function Navigation() {
                   onClick={() => handleLanguageChange('he')}
                   className={language === 'he' ? 'active' : ''}
                 >
-                  עברית
+                  🇮🇱 עברית
                 </button>
                 <button 
                   onClick={() => handleLanguageChange('en')}
                   className={language === 'en' ? 'active' : ''}
                 >
-                  English
+                  🇬🇧 English
                 </button>
                 <button 
                   onClick={() => handleLanguageChange('th')}
                   className={language === 'th' ? 'active' : ''}
                 >
-                  ไทย
+                  🇹🇭 ไทย
                 </button>
               </div>
             </div>

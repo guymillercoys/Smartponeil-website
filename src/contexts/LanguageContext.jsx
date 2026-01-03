@@ -13,8 +13,14 @@ export const useLanguage = () => {
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
     // שמירת השפה ב-localStorage
+    // אם אין שפה שמורה, השתמש בתאילנדית כברירת מחדל
     const saved = localStorage.getItem('language')
-    return saved || 'he' // ברירת מחדל: עברית
+    if (!saved) {
+      // אם זו הפעם הראשונה, הגדר תאילנדית ושמור
+      localStorage.setItem('language', 'th')
+      return 'th'
+    }
+    return saved
   })
 
   useEffect(() => {

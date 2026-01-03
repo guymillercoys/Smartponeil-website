@@ -136,13 +136,229 @@ function Products() {
       image: '/images/כובע תאילנדי 2.jpeg',
       category: t.products.clothingCategory,
       productType: t.products.productTypeClothing
+    },
+    // מוצרי אפל - מסודרים לפי סוגים
+    // קבלי טעינה (1, 4, 19, 12, 25)
+    {
+      id: 13,
+      name: t.products.appleChargingCable,
+      description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
+      priceILS: 50,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.39.jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleChargingCable
+    },
+    {
+      id: 16,
+      name: t.products.appleChargingCable,
+      description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
+      priceILS: 50,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.40 (1).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleChargingCable
+    },
+    {
+      id: 24,
+      name: t.products.appleChargingCable,
+      description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
+      priceILS: 50,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.41 (4).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleChargingCable
+    },
+    {
+      id: 29,
+      name: t.products.appleChargingCable,
+      description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
+      priceILS: 50,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.43 (2).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleChargingCable
+    },
+    {
+      id: 37,
+      name: t.products.appleChargingCable,
+      description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
+      priceILS: 50,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.44 (3).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleChargingCable
+    },
+    // iPhone (2, 17, 20, 21, 26)
+    {
+      id: 14,
+      name: t.products.applePhone,
+      description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
+      priceILS: 2000,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.39 (1).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.applePhone
+    },
+    {
+      id: 31,
+      name: t.products.applePhone,
+      description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
+      priceILS: 2000,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.43 (3).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.applePhone
+    },
+    {
+      id: 32,
+      name: t.products.applePhone,
+      description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
+      priceILS: 2000,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.43 (4).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.applePhone
+    },
+    {
+      id: 33,
+      name: t.products.applePhone,
+      description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
+      priceILS: 2000,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.43.jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.applePhone
+    },
+    // MacBook
+    {
+      id: 20,
+      name: t.products.appleMac,
+      description: language === 'he' ? 'MacBook איכותי' : language === 'en' ? 'Quality MacBook' : 'MacBook คุณภาพดี',
+      priceILS: 3000,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.41.jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleMac
+    },
+    // AirPods (3, 9, 10, 11)
+    {
+      id: 15,
+      name: t.products.appleEarbuds,
+      description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
+      priceILS: 300,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.40.jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleEarbuds
+    },
+    {
+      id: 19,
+      name: t.products.appleEarbuds,
+      description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
+      priceILS: 300,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.40 (4).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleEarbuds
+    },
+    {
+      id: 21,
+      name: t.products.appleEarbuds,
+      description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
+      priceILS: 300,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.41 (1).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleEarbuds
+    },
+    {
+      id: 22,
+      name: t.products.appleEarbuds,
+      description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
+      priceILS: 300,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.41 (2).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleEarbuds
+    },
+    {
+      id: 23,
+      name: t.products.appleEarbuds,
+      description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
+      priceILS: 300,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.41 (3).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleEarbuds
+    },
+    // AirTag (5, 24)
+    {
+      id: 17,
+      name: t.products.appleAirTag,
+      description: language === 'he' ? 'AirTag של אפל' : language === 'en' ? 'Apple AirTag' : 'Apple AirTag',
+      priceILS: 100,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.40 (2).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleAirTag
+    },
+    {
+      id: 36,
+      name: t.products.appleAirTag,
+      description: language === 'he' ? 'AirTag של אפל' : language === 'en' ? 'Apple AirTag' : 'Apple AirTag',
+      priceILS: 100,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.44 (2).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleAirTag
+    },
+    // iPad (15, 16)
+    {
+      id: 27,
+      name: t.products.appleIpad,
+      description: language === 'he' ? 'iPad איכותי' : language === 'en' ? 'Quality iPad' : 'iPad คุณภาพดี',
+      priceILS: 1500,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.42 (2).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleIpad
+    },
+    {
+      id: 28,
+      name: t.products.appleIpad,
+      description: language === 'he' ? 'iPad איכותי' : language === 'en' ? 'Quality iPad' : 'iPad คุณภาพดี',
+      priceILS: 1500,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.42 (3).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleIpad
+    },
+    // Apple Pencil (14)
+    {
+      id: 26,
+      name: t.products.applePencil,
+      description: language === 'he' ? 'Apple Pencil לאייפד' : language === 'en' ? 'Apple Pencil for iPad' : 'Apple Pencil สำหรับ iPad',
+      priceILS: 400,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.42 (1).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.applePencil
+    },
+    // Apple Watch (13, 18, 22, 23)
+    {
+      id: 25,
+      name: t.products.appleWatch,
+      description: language === 'he' ? 'Apple Watch איכותי' : language === 'en' ? 'Quality Apple Watch' : 'Apple Watch คุณภาพดี',
+      priceILS: 800,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.42.jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleWatch
+    },
+    {
+      id: 30,
+      name: t.products.appleWatch,
+      description: language === 'he' ? 'Apple Watch איכותי' : language === 'en' ? 'Quality Apple Watch' : 'Apple Watch คุณภาพดี',
+      priceILS: 800,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.43 (1).jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleWatch
+    },
+    {
+      id: 34,
+      name: t.products.appleWatch,
+      description: language === 'he' ? 'Apple Watch איכותי' : language === 'en' ? 'Quality Apple Watch' : 'Apple Watch คุณภาพดี',
+      priceILS: 800,
+      image: '/images/WhatsApp Image 2026-01-02 at 06.42.44.jpeg',
+      category: t.products.appleCategory,
+      productType: t.products.appleWatch
     }
   ].map(product => ({
     ...product,
     price: formatPrice(product.priceILS)
   }))
 
-  const categories = [t.products.allCategories, t.products.foodCategory, t.products.shoppingCategory, t.products.clothingCategory]
+  const categories = [t.products.allCategories, t.products.foodCategory, t.products.shoppingCategory, t.products.clothingCategory, t.products.appleCategory]
   
   // קביעת סוגי מוצרים זמינים לפי הקטגוריה שנבחרה
   const getAvailableProductTypes = () => {
@@ -191,7 +407,7 @@ function Products() {
               {category}
             </button>
           ))}
-        </div>
+              </div>
 
         {/* תפריט סינון משני - סוגי מוצרים */}
         {selectedCategory !== t.products.allCategories && availableProductTypes.length > 1 && (
@@ -205,7 +421,7 @@ function Products() {
                 {type}
               </button>
             ))}
-          </div>
+                    </div>
         )}
 
         {/* רשימת מוצרים */}
@@ -234,9 +450,9 @@ function Products() {
                       {t.products.buyNow}
                     </button>
                   </div>
-                </div>
-              </div>
-            ))}
+                    </div>
+                  </div>
+                ))}
           </div>
         </div>
 
@@ -270,7 +486,7 @@ function Products() {
                 /> */}
               </div>
             </div>
-          </div>
+        </div>
         )}
       </div>
     </div>
