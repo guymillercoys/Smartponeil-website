@@ -1,0 +1,178 @@
+{
+  "airpods-001": {
+    "name": "AirPods",
+    "price": 300,
+    "currency": 1
+  },
+  "airpods-002": {
+    "name": "AirPods",
+    "price": 300,
+    "currency": 1
+  },
+  "airpods-003": {
+    "name": "AirPods",
+    "price": 300,
+    "currency": 1
+  },
+  "airpods-004": {
+    "name": "AirPods",
+    "price": 300,
+    "currency": 1
+  },
+  "airpods-005": {
+    "name": "AirPods",
+    "price": 300,
+    "currency": 1
+  },
+  "airtag-001": {
+    "name": "AirTag",
+    "price": 100,
+    "currency": 1
+  },
+  "airtag-002": {
+    "name": "AirTag",
+    "price": 100,
+    "currency": 1
+  },
+  "apple-pencil-001": {
+    "name": "Apple Pencil",
+    "price": 400,
+    "currency": 1
+  },
+  "apple-watch-001": {
+    "name": "Apple Watch",
+    "price": 800,
+    "currency": 1
+  },
+  "apple-watch-002": {
+    "name": "Apple Watch",
+    "price": 800,
+    "currency": 1
+  },
+  "apple-watch-003": {
+    "name": "Apple Watch",
+    "price": 800,
+    "currency": 1
+  },
+  "bicycle-new": {
+    "name": "New Bicycles",
+    "price": 800,
+    "currency": 1
+  },
+  "bicycle-used": {
+    "name": "Used Bicycles",
+    "price": 300,
+    "currency": 1
+  },
+  "charging-cable-001": {
+    "name": "Charging Cable",
+    "price": 50,
+    "currency": 1
+  },
+  "charging-cable-002": {
+    "name": "Charging Cable",
+    "price": 50,
+    "currency": 1
+  },
+  "charging-cable-003": {
+    "name": "Charging Cable",
+    "price": 50,
+    "currency": 1
+  },
+  "charging-cable-004": {
+    "name": "Charging Cable",
+    "price": 50,
+    "currency": 1
+  },
+  "charging-cable-005": {
+    "name": "Charging Cable",
+    "price": 50,
+    "currency": 1
+  },
+  "essentials": {
+    "name": "Essentials",
+    "price": 100,
+    "currency": 1
+  },
+  "food-packages": {
+    "name": "Food Packages",
+    "price": 150,
+    "currency": 1
+  },
+  "hat-regular": {
+    "name": "Regular Hat",
+    "price": 35,
+    "currency": 1
+  },
+  "hat-sock": {
+    "name": "Sock Hat",
+    "price": 50,
+    "currency": 1
+  },
+  "hat-thai-001": {
+    "name": "Thai Hat 1",
+    "price": 85,
+    "currency": 1
+  },
+  "hat-thai-002": {
+    "name": "Thai Hat 2",
+    "price": 85,
+    "currency": 1
+  },
+  "internet-packages": {
+    "name": "Internet Packages",
+    "price": 99,
+    "currency": 1
+  },
+  "ipad-001": {
+    "name": "iPad",
+    "price": 1500,
+    "currency": 1
+  },
+  "ipad-002": {
+    "name": "iPad",
+    "price": 1500,
+    "currency": 1
+  },
+  "iphone-001": {
+    "name": "iPhone",
+    "price": 2000,
+    "currency": 1
+  },
+  "iphone-002": {
+    "name": "iPhone",
+    "price": 2000,
+    "currency": 1
+  },
+  "iphone-003": {
+    "name": "iPhone",
+    "price": 2000,
+    "currency": 1
+  },
+  "iphone-004": {
+    "name": "iPhone",
+    "price": 2000,
+    "currency": 1
+  },
+  "kitchen-homeware": {
+    "name": "Kitchen & Homeware",
+    "price": 80,
+    "currency": 1
+  },
+  "macbook-001": {
+    "name": "MacBook",
+    "price": 3000,
+    "currency": 1
+  },
+  "mobile-phones": {
+    "name": "Mobile Phones",
+    "price": 200,
+    "currency": 1
+  },
+  "sim-cards": {
+    "name": "SIM Cards",
+    "price": 50,
+    "currency": 1
+  }
+}
+
