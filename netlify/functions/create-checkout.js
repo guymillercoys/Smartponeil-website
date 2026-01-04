@@ -26,6 +26,15 @@ export const handler = async (event) => {
     };
   }
 
+  // Payments kill-switch
+  if (process.env.PAYMENTS_ENABLED !== "true") {
+    return {
+      statusCode: 403,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ error: "Payments are currently disabled" })
+    };
+  }
+
   // Check for TRANZILA_TERMINAL_NAME env var
   const terminalName = process.env.TRANZILA_TERMINAL_NAME;
   if (!terminalName) {
