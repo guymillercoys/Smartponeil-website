@@ -1,5 +1,11 @@
 // Load catalog at module level so it's bundled with the function
 const catalog = require("./catalog.json");
+const crypto = require("crypto");
+
+// Helper function to generate random hex string
+function generateRandomHex(length = 16) {
+  return crypto.randomBytes(length).toString('hex');
+}
 
 exports.handler = async (event) => {
   // CORS headers for development
@@ -31,6 +37,19 @@ exports.handler = async (event) => {
     };
   }
 
+  // Check for Supabase env vars
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: 'SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY environment variable is not set'
+      })
+    };
+  }
+
   // Get product SKU from query params
   const productSku = event.queryStringParameters?.product;
   if (!productSku) {
@@ -55,10 +74,49 @@ exports.handler = async (event) => {
     };
   }
 
-  // Generate orderId
+  // Generate orderId and notifyToken
   const timestamp = Date.now();
-  const randomHex = Math.random().toString(16).substring(2, 10);
+  const randomHex = generateRandomHex(8);
   const orderId = `ord_${timestamp}_${randomHex}`;
+  const notifyToken = generateRandomHex(32);
+
+  // Compute shipping defaults
+  const shipping_required = product.shippingRequired ?? false;
+  const shipping_cost = product.shippingCost ?? 0;
+  const total_amount = product.price + shipping_cost;
+
+  // Create Supabase client using dynamic import
+  const { createClient } = await import("@supabase/supabase-js");
+  const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
+
+  // Insert order into Supabase
+  const { data: orderData, error: insertError } = await supabase
+    .from('orders')
+    .insert({
+      order_id: orderId,
+      sku: productSku,
+      amount: product.price,
+      currency: product.currency ?? 1,
+      status: 'pending',
+      notify_token: notifyToken,
+      shipping_required,
+      shipping_cost,
+      total_amount
+    })
+    .select()
+    .single();
+
+  // If insert fails, return 500 and do not return iframe URL
+  if (insertError) {
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: 'Failed to create order',
+        details: insertError.message
+      })
+    };
+  }
 
   // Prepare Z_field
   const zField = `${orderId}|${productSku}`;
@@ -66,7 +124,7 @@ exports.handler = async (event) => {
   // Get SITE_URL
   const siteUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || 'http://localhost:8888';
 
-  // Build Tranzila iframe URL
+  // Build Tranzila iframe URL with token in notify_url_address
   const baseUrl = `https://direct.tranzila.com/${terminalName}/iframe.php`;
   const params = new URLSearchParams({
     sum: product.price.toString(),
@@ -76,7 +134,7 @@ exports.handler = async (event) => {
     accessibility: '2',
     success_url_address: `${siteUrl}/payment/success?order=${orderId}`,
     fail_url_address: `${siteUrl}/payment/failure?order=${orderId}`,
-    notify_url_address: `${siteUrl}/.netlify/functions/tranzila-notify`,
+    notify_url_address: `${siteUrl}/.netlify/functions/tranzila-notify?token=${notifyToken}`,
     Z_field: zField
   });
 
