@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import { translations } from '../translations/translations'
 import './Products.css'
@@ -6,9 +7,9 @@ import './Products.css'
 function Products() {
   const { language } = useLanguage()
   const t = translations[language]
+  const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] = useState(t.products.allCategories)
   const [selectedProductType, setSelectedProductType] = useState(t.products.allTypes)
-  const [selectedProduct, setSelectedProduct] = useState(null)
 
   // פונקציה להצגת מחיר לפי שפה
   const formatPrice = (priceInILS) => {
@@ -28,6 +29,7 @@ function Products() {
     // מוצרי אוכל
     {
       id: 1,
+      sku: 'food-packages',
       name: t.products.foodPackages,
       description: t.products.foodPackagesDesc,
       priceILS: 150,
@@ -37,6 +39,7 @@ function Products() {
     },
     {
       id: 2,
+      sku: 'essentials',
       name: t.products.essentials,
       description: t.products.essentialsDesc,
       priceILS: 100,
@@ -46,6 +49,7 @@ function Products() {
     },
     {
       id: 3,
+      sku: 'kitchen-homeware',
       name: t.products.kitchen,
       description: t.products.kitchenDesc,
       priceILS: 80,
@@ -56,6 +60,7 @@ function Products() {
     // מוצרי קניות - תקשורת
     {
       id: 4,
+      sku: 'sim-cards',
       name: t.products.simCards,
       description: t.products.simDesc,
       priceILS: 50,
@@ -65,6 +70,7 @@ function Products() {
     },
     {
       id: 5,
+      sku: 'internet-packages',
       name: t.products.internet,
       description: t.products.internetDesc,
       priceILS: 99,
@@ -74,6 +80,7 @@ function Products() {
     },
     {
       id: 6,
+      sku: 'mobile-phones',
       name: t.products.phones,
       description: t.products.phonesDesc,
       priceILS: 200,
@@ -84,6 +91,7 @@ function Products() {
     // מוצרי קניות - אופניים
     {
       id: 7,
+      sku: 'bicycle-new',
       name: t.products.bikesNew,
       description: t.products.bikesNewDesc,
       priceILS: 800,
@@ -93,6 +101,7 @@ function Products() {
     },
     {
       id: 8,
+      sku: 'bicycle-used',
       name: t.products.bikesUsed,
       description: t.products.bikesUsedDesc,
       priceILS: 300,
@@ -103,6 +112,7 @@ function Products() {
     // מוצרי ביגוד - כובעים
     {
       id: 9,
+      sku: 'hat-regular',
       name: t.products.hatRegular,
       description: t.products.hatRegularDesc,
       priceILS: 35,
@@ -112,6 +122,7 @@ function Products() {
     },
     {
       id: 10,
+      sku: 'hat-sock',
       name: t.products.hatSock,
       description: t.products.hatSockDesc,
       priceILS: 50,
@@ -121,6 +132,7 @@ function Products() {
     },
     {
       id: 11,
+      sku: 'hat-thai-001',
       name: t.products.hatThai1,
       description: t.products.hatThai1Desc,
       priceILS: 85,
@@ -130,6 +142,7 @@ function Products() {
     },
     {
       id: 12,
+      sku: 'hat-thai-002',
       name: t.products.hatThai2,
       description: t.products.hatThai2Desc,
       priceILS: 85,
@@ -138,9 +151,10 @@ function Products() {
       productType: t.products.productTypeClothing
     },
     // מוצרי אפל - מסודרים לפי סוגים
-    // קבלי טעינה (1, 4, 19, 12, 25)
+    // קבלי טעינה
     {
       id: 13,
+      sku: 'charging-cable-001',
       name: t.products.appleChargingCable,
       description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
       priceILS: 50,
@@ -150,6 +164,7 @@ function Products() {
     },
     {
       id: 16,
+      sku: 'charging-cable-002',
       name: t.products.appleChargingCable,
       description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
       priceILS: 50,
@@ -159,6 +174,7 @@ function Products() {
     },
     {
       id: 24,
+      sku: 'charging-cable-003',
       name: t.products.appleChargingCable,
       description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
       priceILS: 50,
@@ -168,6 +184,7 @@ function Products() {
     },
     {
       id: 29,
+      sku: 'charging-cable-004',
       name: t.products.appleChargingCable,
       description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
       priceILS: 50,
@@ -177,6 +194,7 @@ function Products() {
     },
     {
       id: 37,
+      sku: 'charging-cable-005',
       name: t.products.appleChargingCable,
       description: language === 'he' ? 'כבל טעינה איכותי לאפל' : language === 'en' ? 'Quality Apple charging cable' : 'สายชาร์จ Apple คุณภาพดี',
       priceILS: 50,
@@ -184,9 +202,10 @@ function Products() {
       category: t.products.appleCategory,
       productType: t.products.appleChargingCable
     },
-    // iPhone (2, 17, 20, 21, 26)
+    // iPhone
     {
       id: 14,
+      sku: 'iphone-001',
       name: t.products.applePhone,
       description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
       priceILS: 2000,
@@ -196,6 +215,7 @@ function Products() {
     },
     {
       id: 31,
+      sku: 'iphone-002',
       name: t.products.applePhone,
       description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
       priceILS: 2000,
@@ -205,6 +225,7 @@ function Products() {
     },
     {
       id: 32,
+      sku: 'iphone-003',
       name: t.products.applePhone,
       description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
       priceILS: 2000,
@@ -214,6 +235,7 @@ function Products() {
     },
     {
       id: 33,
+      sku: 'iphone-004',
       name: t.products.applePhone,
       description: language === 'he' ? 'iPhone איכותי' : language === 'en' ? 'Quality iPhone' : 'iPhone คุณภาพดี',
       priceILS: 2000,
@@ -224,6 +246,7 @@ function Products() {
     // MacBook
     {
       id: 20,
+      sku: 'macbook-001',
       name: t.products.appleMac,
       description: language === 'he' ? 'MacBook איכותי' : language === 'en' ? 'Quality MacBook' : 'MacBook คุณภาพดี',
       priceILS: 3000,
@@ -231,9 +254,10 @@ function Products() {
       category: t.products.appleCategory,
       productType: t.products.appleMac
     },
-    // AirPods (3, 9, 10, 11)
+    // AirPods
     {
       id: 15,
+      sku: 'airpods-001',
       name: t.products.appleEarbuds,
       description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
       priceILS: 300,
@@ -243,6 +267,7 @@ function Products() {
     },
     {
       id: 19,
+      sku: 'airpods-002',
       name: t.products.appleEarbuds,
       description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
       priceILS: 300,
@@ -252,6 +277,7 @@ function Products() {
     },
     {
       id: 21,
+      sku: 'airpods-003',
       name: t.products.appleEarbuds,
       description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
       priceILS: 300,
@@ -261,6 +287,7 @@ function Products() {
     },
     {
       id: 22,
+      sku: 'airpods-004',
       name: t.products.appleEarbuds,
       description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
       priceILS: 300,
@@ -270,6 +297,7 @@ function Products() {
     },
     {
       id: 23,
+      sku: 'airpods-005',
       name: t.products.appleEarbuds,
       description: language === 'he' ? 'AirPods איכותיים' : language === 'en' ? 'Quality AirPods' : 'AirPods คุณภาพดี',
       priceILS: 300,
@@ -277,9 +305,10 @@ function Products() {
       category: t.products.appleCategory,
       productType: t.products.appleEarbuds
     },
-    // AirTag (5, 24)
+    // AirTag
     {
       id: 17,
+      sku: 'airtag-001',
       name: t.products.appleAirTag,
       description: language === 'he' ? 'AirTag של אפל' : language === 'en' ? 'Apple AirTag' : 'Apple AirTag',
       priceILS: 100,
@@ -289,6 +318,7 @@ function Products() {
     },
     {
       id: 36,
+      sku: 'airtag-002',
       name: t.products.appleAirTag,
       description: language === 'he' ? 'AirTag של אפל' : language === 'en' ? 'Apple AirTag' : 'Apple AirTag',
       priceILS: 100,
@@ -296,9 +326,10 @@ function Products() {
       category: t.products.appleCategory,
       productType: t.products.appleAirTag
     },
-    // iPad (15, 16)
+    // iPad
     {
       id: 27,
+      sku: 'ipad-001',
       name: t.products.appleIpad,
       description: language === 'he' ? 'iPad איכותי' : language === 'en' ? 'Quality iPad' : 'iPad คุณภาพดี',
       priceILS: 1500,
@@ -308,6 +339,7 @@ function Products() {
     },
     {
       id: 28,
+      sku: 'ipad-002',
       name: t.products.appleIpad,
       description: language === 'he' ? 'iPad איכותי' : language === 'en' ? 'Quality iPad' : 'iPad คุณภาพดี',
       priceILS: 1500,
@@ -315,9 +347,10 @@ function Products() {
       category: t.products.appleCategory,
       productType: t.products.appleIpad
     },
-    // Apple Pencil (14)
+    // Apple Pencil
     {
       id: 26,
+      sku: 'apple-pencil-001',
       name: t.products.applePencil,
       description: language === 'he' ? 'Apple Pencil לאייפד' : language === 'en' ? 'Apple Pencil for iPad' : 'Apple Pencil สำหรับ iPad',
       priceILS: 400,
@@ -325,9 +358,10 @@ function Products() {
       category: t.products.appleCategory,
       productType: t.products.applePencil
     },
-    // Apple Watch (13, 18, 22, 23)
+    // Apple Watch
     {
       id: 25,
+      sku: 'apple-watch-001',
       name: t.products.appleWatch,
       description: language === 'he' ? 'Apple Watch איכותי' : language === 'en' ? 'Quality Apple Watch' : 'Apple Watch คุณภาพดี',
       priceILS: 800,
@@ -337,6 +371,7 @@ function Products() {
     },
     {
       id: 30,
+      sku: 'apple-watch-002',
       name: t.products.appleWatch,
       description: language === 'he' ? 'Apple Watch איכותי' : language === 'en' ? 'Quality Apple Watch' : 'Apple Watch คุณภาพดี',
       priceILS: 800,
@@ -346,6 +381,7 @@ function Products() {
     },
     {
       id: 34,
+      sku: 'apple-watch-003',
       name: t.products.appleWatch,
       description: language === 'he' ? 'Apple Watch איכותי' : language === 'en' ? 'Quality Apple Watch' : 'Apple Watch คุณภาพดี',
       priceILS: 800,
@@ -379,12 +415,12 @@ function Products() {
     return categoryMatch && typeMatch
   })
 
+  // Handle Buy button click - navigate to checkout with product SKU
+  // Test: Clicking "Buy" on iPhone product should navigate to /checkout?product=iphone-001
   const handleBuyClick = (product) => {
-    setSelectedProduct(product)
-  }
-
-  const closePaymentModal = () => {
-    setSelectedProduct(null)
+    if (product.sku) {
+      navigate(`/checkout?product=${encodeURIComponent(product.sku)}`)
+    }
   }
 
   return (
@@ -446,6 +482,7 @@ function Products() {
                     <button 
                       className="buy-button"
                       onClick={() => handleBuyClick(product)}
+                      disabled={!product.sku}
                     >
                       {t.products.buyNow}
                     </button>
@@ -456,38 +493,6 @@ function Products() {
           </div>
         </div>
 
-        {/* Modal לתשלום */}
-        {selectedProduct && (
-          <div className="payment-modal" onClick={closePaymentModal}>
-            <div className="payment-modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="payment-modal-close" onClick={closePaymentModal}>×</button>
-              <h2 className="payment-modal-title">
-                {language === 'he' ? 'רכישת' : language === 'en' ? 'Purchase' : 'การซื้อ'} {selectedProduct.name}
-              </h2>
-              <div className="payment-iframe-container">
-                {/* כאן יופיע ה-iframe של התשלום */}
-                <div className="payment-iframe-placeholder">
-                  <p>
-                    {language === 'he' 
-                      ? 'כאן יופיע iframe של תשלום' 
-                      : language === 'en' 
-                      ? 'Payment iframe will appear here' 
-                      : 'iframe การชำระเงินจะปรากฏที่นี่'}
-                  </p>
-                  <p className="payment-info">
-                    {selectedProduct.name} - {selectedProduct.price}
-                  </p>
-                </div>
-                {/* <iframe 
-                  src="YOUR_PAYMENT_URL_HERE"
-                  className="payment-iframe"
-                  title="Payment"
-                  frameBorder="0"
-                /> */}
-              </div>
-            </div>
-        </div>
-        )}
       </div>
     </div>
   )

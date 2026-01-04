@@ -165,6 +165,21 @@ export const translations = {
       workingHours: 'ראשון - חמישי: 09:00 - 18:00',
       friday: 'שישי: 09:00 - 14:00',
       emergency: 'שירות חירום: 24/7'
+    },
+    payment: {
+      checkout: 'תשלום',
+      missingProduct: 'מוצר חסר',
+      missingProductText: 'לא צוין מוצר. אנא חזור לעמוד המוצרים ובחר מוצר.',
+      loading: 'טוען...',
+      error: 'שגיאה',
+      errorText: 'אירעה שגיאה בטעינת פרטי התשלום. אנא נסה שוב.',
+      success: 'תשלום הושלם בהצלחה',
+      successText: 'תודה על רכישתך!',
+      failure: 'התשלום נכשל',
+      failureText: 'התשלום לא הושלם. אנא נסה שוב או צור קשר לתמיכה.',
+      order: 'הזמנה',
+      backToHome: 'חזור לעמוד הבית',
+      backToProducts: 'חזור למוצרים'
     }
   },
   en: {
@@ -333,6 +348,21 @@ export const translations = {
       workingHours: 'Sunday - Thursday: 09:00 - 18:00',
       friday: 'Friday: 09:00 - 14:00',
       emergency: 'Emergency Service: 24/7'
+    },
+    payment: {
+      checkout: 'Checkout',
+      missingProduct: 'Missing Product',
+      missingProductText: 'No product specified. Please return to the products page and select a product.',
+      loading: 'Loading...',
+      error: 'Error',
+      errorText: 'An error occurred while loading payment details. Please try again.',
+      success: 'Payment Successful',
+      successText: 'Thank you for your purchase!',
+      failure: 'Payment Failed',
+      failureText: 'The payment was not completed. Please try again or contact support.',
+      order: 'Order',
+      backToHome: 'Back to Home',
+      backToProducts: 'Back to Products'
     }
   },
   th: {
@@ -501,6 +531,21 @@ export const translations = {
       workingHours: 'อาทิตย์ - พฤหัสบดี: 09:00 - 18:00',
       friday: 'ศุกร์: 09:00 - 14:00',
       emergency: 'บริการฉุกเฉิน: 24/7'
+    },
+    payment: {
+      checkout: 'ชำระเงิน',
+      missingProduct: 'ไม่มีสินค้า',
+      missingProductText: 'ไม่ได้ระบุสินค้า กรุณากลับไปที่หน้าสินค้าและเลือกสินค้า',
+      loading: 'กำลังโหลด...',
+      error: 'ข้อผิดพลาด',
+      errorText: 'เกิดข้อผิดพลาดในการโหลดรายละเอียดการชำระเงิน กรุณาลองอีกครั้ง',
+      success: 'การชำระเงินสำเร็จ',
+      successText: 'ขอบคุณสำหรับการซื้อของคุณ!',
+      failure: 'การชำระเงินล้มเหลว',
+      failureText: 'การชำระเงินไม่เสร็จสมบูรณ์ กรุณาลองอีกครั้งหรือติดต่อฝ่ายสนับสนุน',
+      order: 'คำสั่งซื้อ',
+      backToHome: 'กลับไปหน้าหลัก',
+      backToProducts: 'กลับไปหน้าสินค้า'
     }
   }
 }

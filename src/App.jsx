@@ -6,6 +6,9 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Products from './pages/Products'
 import Gallery from './pages/Gallery'
+import Checkout from './pages/Checkout'
+import PaymentSuccess from './pages/PaymentSuccess'
+import PaymentFailure from './pages/PaymentFailure'
 import './App.css'
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/products" element={<Products />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/payment/success" element={<PaymentSuccess />} />
+              <Route path="/payment/failure" element={<PaymentFailure />} />
             </Routes>
           </main>
         </div>
