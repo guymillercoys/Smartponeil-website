@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+// Load catalog at module level so it's bundled with the function
+const catalog = require("./catalog.json");
 
 exports.handler = async (event) => {
   // CORS headers for development
@@ -39,23 +39,6 @@ exports.handler = async (event) => {
       headers,
       body: JSON.stringify({
         error: 'Missing required query parameter: product'
-      })
-    };
-  }
-
-  // Load catalog.json
-  let catalog;
-  try {
-    const catalogPath = path.join(__dirname, 'catalog.json');
-    const catalogData = fs.readFileSync(catalogPath, 'utf8');
-    catalog = JSON.parse(catalogData);
-  } catch (error) {
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({
-        error: 'Failed to load product catalog',
-        details: error.message
       })
     };
   }

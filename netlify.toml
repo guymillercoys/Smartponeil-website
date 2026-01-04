@@ -1,0 +1,7 @@
+[build]
+  functions = "netlify/functions"
+  publish = "dist"
+
+[[plugins]]
+  package = "@netlify/plugin-functions"
+
