@@ -1,13 +1,14 @@
 // Load catalog at module level so it's bundled with the function
-const catalog = require("./catalog.json");
-const crypto = require("crypto");
+import catalog from "./catalog.json" assert { type: "json" };
+import crypto from "crypto";
+import { createClient } from "@supabase/supabase-js";
 
 // Helper function to generate random hex string
 function generateRandomHex(length = 16) {
   return crypto.randomBytes(length).toString('hex');
 }
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   // CORS headers for development
   const headers = {
     'Content-Type': 'application/json',
@@ -85,8 +86,7 @@ exports.handler = async (event) => {
   const shipping_cost = product.shippingCost ?? 0;
   const total_amount = product.price + shipping_cost;
 
-  // Create Supabase client using dynamic import
-  const { createClient } = await import("@supabase/supabase-js");
+  // Create Supabase client
   const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
   // Insert order into Supabase
