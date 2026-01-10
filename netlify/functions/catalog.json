@@ -173,6 +173,11 @@
     "name": "SIM Cards",
     "price": 50,
     "currency": 1
+  },
+  "service-base": {
+    "name": "Service Payment",
+    "price": 100,
+    "currency": 1
   }
 }
 

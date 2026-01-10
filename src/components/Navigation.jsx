@@ -56,6 +56,11 @@ function Navigation() {
               {t.nav.contact}
             </Link>
           </li>
+          <li>
+            <Link to="/service-payment" className={location.pathname === '/service-payment' ? 'active' : ''}>
+              תשלום לשירות
+            </Link>
+          </li>
         </ul>
         <div className="nav-actions">
           <div className="language-selector">
