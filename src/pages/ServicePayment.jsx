@@ -9,7 +9,6 @@ function ServicePayment() {
     arrivalDate: '',
     workplace: ''
   })
-  const [hasLocalCard, setHasLocalCard] = useState(false)
   const [errors, setErrors] = useState({})
   const [showPaymentStep, setShowPaymentStep] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -106,6 +105,11 @@ function ServicePayment() {
   }
 
   const handlePaymentClick = async () => {
+    // Prevent double submission if iframe is already shown
+    if (showPaymentStep && checkoutUrl) {
+      return
+    }
+
     if (!validateForm()) {
       return
     }
@@ -127,14 +131,20 @@ function ServicePayment() {
           passportNumber: formData.passportNumber.trim(),
           phone: cleanedPhone,
           arrivalDate: formData.arrivalDate,
-          workplace: formData.workplace.trim(),
-          hasLocalCard: hasLocalCard
+          workplace: formData.workplace.trim()
         })
       })
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}))
-        throw new Error(errorData.error || 'שגיאה ביצירת תשלום')
+        const errorMessage = errorData.error || 'שגיאה ביצירת תשלום'
+        
+        // If pricing not found, suggest WhatsApp
+        if (errorMessage.includes('pricing') || errorMessage.includes('No pricing')) {
+          throw new Error('לא נמצא מחיר למספר טלפון זה. אנא פנה אלינו בוואטסאפ להשלמת התשלום.')
+        }
+        
+        throw new Error(errorMessage)
       }
 
       const data = await response.json()
@@ -151,8 +161,9 @@ function ServicePayment() {
   }
 
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent('היי, אני אשמח לשלם על הסים שלי')
-    window.open(`https://wa.me/972544449109?text=${message}`, '_blank')
+    // WhatsApp button works even if form is empty
+    const message = 'היי, אני אשמח לשלם על הסים שלי'
+    window.open(`https://wa.me/972544449109?text=${encodeURIComponent(message)}`, '_blank')
   }
 
   return (
@@ -230,49 +241,31 @@ function ServicePayment() {
                 {errors.workplace && <span className="error-message">{errors.workplace}</span>}
               </div>
 
-              <div className="checkbox-group">
-                <label className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    checked={hasLocalCard}
-                    onChange={(e) => setHasLocalCard(e.target.checked)}
-                  />
-                  <span>יש לי כרטיס אשראי מקומי</span>
-                </label>
+              <div className="payment-branch">
+                <button
+                  type="button"
+                  className="btn-primary"
+                  onClick={handlePaymentClick}
+                  disabled={loading || (showPaymentStep && checkoutUrl)}
+                >
+                  {loading ? 'טוען...' : 'המשך לתשלום'}
+                </button>
+                {paymentError && (
+                  <div className="error-box">
+                    <p>{paymentError}</p>
+                  </div>
+                )}
               </div>
 
-              {hasLocalCard && (
-                <div className="payment-branch">
-                  <button
-                    type="button"
-                    className="btn-primary"
-                    onClick={handlePaymentClick}
-                    disabled={loading}
-                  >
-                    {loading ? 'טוען...' : 'לתשלום באמצעות כרטיס אשראי מקומי'}
-                  </button>
-                  {paymentError && (
-                    <div className="error-box">
-                      <p>{paymentError}</p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {!hasLocalCard && (
-                <div className="whatsapp-branch">
-                  <p className="whatsapp-note">
-                    אם אין לך כרטיס אשראי מקומי, נציג יעזור לך להשלים תשלום.
-                  </p>
-                  <button
-                    type="button"
-                    className="btn-whatsapp"
-                    onClick={handleWhatsAppClick}
-                  >
-                    💬 דברו איתנו בוואטסאפ לתשלום
-                  </button>
-                </div>
-              )}
+              <div className="whatsapp-branch">
+                <button
+                  type="button"
+                  className="btn-whatsapp"
+                  onClick={handleWhatsAppClick}
+                >
+                  💬 דברו איתנו בוואטסאפ לתשלום
+                </button>
+              </div>
             </form>
           </div>
         ) : (

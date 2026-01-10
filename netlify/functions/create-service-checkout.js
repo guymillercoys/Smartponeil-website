@@ -81,7 +81,7 @@ export const handler = async (event) => {
   }
 
   // Validate required fields
-  const { fullName, passportNumber, phone, arrivalDate, workplace, hasLocalCard } = body;
+  const { fullName, passportNumber, phone, arrivalDate, workplace } = body;
 
   if (!fullName || !fullName.trim()) {
     return {
@@ -170,7 +170,6 @@ export const handler = async (event) => {
       phone: cleanedPhone,
       arrival_date: arrivalDate,
       workplace: workplace.trim(),
-      has_local_card: hasLocalCard === true,
       amount: pricing.amount,
       currency: pricing.currency,
       order_id: orderId,
@@ -180,12 +179,12 @@ export const handler = async (event) => {
     .single();
 
   if (insertError) {
+    // Don't expose stack traces or internal errors
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: 'Failed to create service request',
-        details: insertError.message
+        error: 'Failed to create service request'
       })
     };
   }

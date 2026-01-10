@@ -1,8 +1,10 @@
 import { createClient } from "@supabase/supabase-js";
 
 export const handler = async (event) => {
-  // Read token from query parameters
+  // Read token and optional source from query parameters
   const token = event.queryStringParameters?.token;
+  const source = event.queryStringParameters?.source; // 'service' or undefined
+  
   if (!token) {
     return {
       statusCode: 400,
@@ -60,42 +62,82 @@ export const handler = async (event) => {
   // Create Supabase client
   const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
-  // First, find order by notify_token
-  const { data: orderData, error: selectError } = await supabase
-    .from('orders')
-    .select('order_id')
-    .eq('notify_token', token)
-    .single();
+  if (source === 'service') {
+    // Handle service requests
+    const { data: serviceRequest, error: selectError } = await supabase
+      .from('service_requests')
+      .select('order_id')
+      .eq('notify_token', token)
+      .single();
 
-  if (selectError || !orderData) {
-    console.log({ token, status, error: "Order not found" });
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'text/plain'
-      },
-      body: 'ok'
+    if (selectError || !serviceRequest) {
+      console.log({ token, status, error: "token not found" });
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        body: 'ok'
+      };
+    }
+
+    const orderId = serviceRequest.order_id;
+
+    // Update service request with status, payload, and paid_at
+    const updateData = {
+      status,
+      tranzila_payload: parsed,
+      paid_at: isPaid ? new Date().toISOString() : null
     };
-  }
 
-  const orderId = orderData.order_id;
+    const { error: updateError } = await supabase
+      .from('service_requests')
+      .update(updateData)
+      .eq('notify_token', token);
 
-  // Update order with status, payload, and paid_at
-  const updateData = {
-    status,
-    tranzila_payload: parsed,
-    paid_at: isPaid ? new Date().toISOString() : null
-  };
-
-  const { error: updateError } = await supabase
-    .from('orders')
-    .update(updateData)
-    .eq('notify_token', token);
-
-  if (updateError) {
-    console.log({ token, status, orderId, error: updateError.message });
+    if (updateError) {
+      console.log({ token, status, orderId, error: updateError.message });
+    } else {
+      console.log({ token, status, orderId });
+    }
   } else {
-    console.log({ token, status, orderId });
+    // Handle product orders (existing behavior)
+    const { data: orderData, error: selectError } = await supabase
+      .from('orders')
+      .select('order_id')
+      .eq('notify_token', token)
+      .single();
+
+    if (selectError || !orderData) {
+      console.log({ token, status, error: "Order not found" });
+      return {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        body: 'ok'
+      };
+    }
+
+    const orderId = orderData.order_id;
+
+    // Update order with status, payload, and paid_at
+    const updateData = {
+      status,
+      tranzila_payload: parsed,
+      paid_at: isPaid ? new Date().toISOString() : null
+    };
+
+    const { error: updateError } = await supabase
+      .from('orders')
+      .update(updateData)
+      .eq('notify_token', token);
+
+    if (updateError) {
+      console.log({ token, status, orderId, error: updateError.message });
+    } else {
+      console.log({ token, status, orderId });
+    }
   }
 
   // Always return 200 "ok"
