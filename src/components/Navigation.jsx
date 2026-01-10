@@ -47,18 +47,13 @@ function Navigation() {
             </Link>
           </li>
           <li>
-            <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
-              {t.nav.gallery}
-            </Link>
-          </li>
-          <li>
             <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>
               {t.nav.contact}
             </Link>
           </li>
           <li>
             <Link to="/service-payment" className={location.pathname === '/service-payment' ? 'active' : ''}>
-              תשלום לשירות
+              {t.nav.servicePayment}
             </Link>
           </li>
         </ul>

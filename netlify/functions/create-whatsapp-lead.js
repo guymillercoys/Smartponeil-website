@@ -1,11 +1,5 @@
-import crypto from "crypto";
 import { createClient } from "@supabase/supabase-js";
 import { cleanPhone, validatePhone } from "./phone-utils.js";
-
-// Helper function to generate random hex string
-function generateRandomHex(length = 16) {
-  return crypto.randomBytes(length).toString('hex');
-}
 
 export const handler = async (event) => {
   // CORS headers
@@ -31,27 +25,6 @@ export const handler = async (event) => {
       statusCode: 405,
       headers,
       body: JSON.stringify({ error: 'Method not allowed' })
-    };
-  }
-
-  // Payments kill-switch
-  if (process.env.PAYMENTS_ENABLED !== "true") {
-    return {
-      statusCode: 403,
-      headers,
-      body: JSON.stringify({ error: "Payments are currently disabled" })
-    };
-  }
-
-  // Check for TRANZILA_TERMINAL_NAME env var
-  const terminalName = process.env.TRANZILA_TERMINAL_NAME;
-  if (!terminalName) {
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({
-        error: 'TRANZILA_TERMINAL_NAME environment variable is not set'
-      })
     };
   }
 
@@ -81,7 +54,7 @@ export const handler = async (event) => {
   }
 
   // Validate required fields
-  const { fullName, passportNumber, phone, arrivalDate, workplace } = body;
+  const { fullName, passportNumber, phone, arrivalDate, workplace, messageTemplate } = body;
 
   if (!fullName || !fullName.trim()) {
     return {
@@ -123,6 +96,14 @@ export const handler = async (event) => {
     };
   }
 
+  if (!messageTemplate || !messageTemplate.trim()) {
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ error: 'Missing or empty field: messageTemplate' })
+    };
+  }
+
   // Clean and validate phone
   const validation = validatePhone(phone);
   if (!validation.valid) {
@@ -138,92 +119,62 @@ export const handler = async (event) => {
   // Create Supabase client
   const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
-  // Lookup pricing in service_pricing
-  const { data: pricing, error: pricingError } = await supabase
-    .from('service_pricing')
-    .select('phone, amount, currency')
-    .eq('phone', cleanedPhone)
-    .eq('active', true)
-    .single();
+  // Get referrer and user agent from headers
+  const referrer = event.headers?.referer || event.headers?.Referer || null;
+  const ua = event.headers?.['user-agent'] || event.headers?.['User-Agent'] || null;
 
-  if (pricingError || !pricing) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'No pricing found for this phone' })
-    };
-  }
-
-  // Generate orderId and notifyToken
-  const timestamp = Date.now();
-  const randomHex = generateRandomHex(8);
-  const orderId = `ord_${timestamp}_${randomHex}`;
-  const notifyToken = generateRandomHex(32);
-
-  // Insert into service_requests
-  const { data: requestData, error: insertError } = await supabase
-    .from('service_requests')
+  // Insert into whatsapp_leads
+  const { data: leadData, error: insertError } = await supabase
+    .from('whatsapp_leads')
     .insert({
-      status: 'pending_payment',
       full_name: fullName.trim(),
       passport_number: passportNumber.trim(),
       phone: cleanedPhone,
       arrival_date: arrivalDate,
       workplace: workplace.trim(),
-      amount: pricing.amount,
-      currency: pricing.currency,
-      order_id: orderId,
-      notify_token: notifyToken
+      message_template: messageTemplate.trim(),
+      page: 'service-payment',
+      referrer: referrer,
+      ua: ua
     })
-    .select()
+    .select('id')
     .single();
 
   if (insertError) {
-    // Don't expose stack traces or internal errors
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: 'Failed to create service request'
+        error: 'Failed to create WhatsApp lead'
       })
     };
   }
 
-  // Get SITE_URL
-  const siteUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || 'http://localhost:8888';
-
-  // Build Tranzila iframe URL
-  const baseUrl = `https://direct.tranzila.com/${terminalName}/iframe.php`;
-  const params = new URLSearchParams({
-    sum: pricing.amount.toString(),
-    currency: (pricing.currency || 1).toString(),
-    cred_type: '1',
-    tranmode: 'A',
-    accessibility: '2',
-    success_url_address: `${siteUrl}/payment/success.html?order=${orderId}`,
-    fail_url_address: `${siteUrl}/payment/failure.html?order=${orderId}`,
-    notify_url_address: `${siteUrl}/.netlify/functions/tranzila-notify?token=${notifyToken}&source=service`,
-    Z_field: `${orderId}|service|${cleanedPhone}`
-  });
-
-  const iframeUrl = `${baseUrl}?${params.toString()}`;
-
-  // Update service_requests with tranzila_url
-  await supabase
-    .from('service_requests')
-    .update({ tranzila_url: iframeUrl })
-    .eq('order_id', orderId);
+  // Send Telegram notification (non-blocking)
+  try {
+    const { sendTelegram } = await import('./_lib/telegram.js');
+    const now = new Date().toISOString();
+    const telegramText = `📲 WhatsApp lead\nName: ${fullName.trim()}\nPhone: ${cleanedPhone}\nPassport: ${passportNumber.trim()}\nArrival: ${arrivalDate}\nWorkplace: ${workplace.trim()}\nTime: ${now}`;
+    
+    await sendTelegram(telegramText);
+    
+    // Update telegram_notified_at
+    await supabase
+      .from('whatsapp_leads')
+      .update({ telegram_notified_at: now })
+      .eq('id', leadData.id);
+  } catch (telegramError) {
+    // Fail gracefully - don't block user
+    console.log("Telegram notification failed:", telegramError.message);
+  }
 
   // Return response
   return {
     statusCode: 200,
     headers,
     body: JSON.stringify({
-      orderId,
-      phone: cleanedPhone,
-      amount: pricing.amount,
-      currency: pricing.currency,
-      url: iframeUrl
+      ok: true,
+      id: leadData.id
     })
   };
 };

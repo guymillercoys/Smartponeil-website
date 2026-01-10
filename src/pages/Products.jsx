@@ -4,6 +4,9 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { translations } from '../translations/translations'
 import './Products.css'
 
+// Set to true to enable the products page, false to show "Coming Soon" message
+const PRODUCTS_PAGE_ENABLED = false
+
 function Products() {
   const { language } = useLanguage()
   const t = translations[language]
@@ -421,6 +424,20 @@ function Products() {
     if (product.sku) {
       navigate(`/checkout?product=${encodeURIComponent(product.sku)}`)
     }
+  }
+
+  // Show "Coming Soon" message if products page is disabled
+  if (!PRODUCTS_PAGE_ENABLED) {
+    return (
+      <div className="products-page">
+        <div className="container">
+          <h1 className="page-title">{t.products.comingSoon}</h1>
+          <p className="products-intro" style={{ textAlign: 'center', fontSize: '1.2rem', marginTop: '2rem' }}>
+            {t.products.comingSoonText}
+          </p>
+        </div>
+      </div>
+    )
   }
 
   return (

@@ -5,7 +5,8 @@ export const translations = {
       about: 'אודות',
       products: 'מוצרים',
       gallery: 'גלריה',
-      contact: 'צור קשר'
+      contact: 'צור קשר',
+      servicePayment: 'תשלום לשירות'
     },
     home: {
       welcome: 'ברוכים הבאים ל-Smartpone',
@@ -127,7 +128,9 @@ export const translations = {
       lowFee: 'עמלה נמוכה',
       wantMore: 'רוצה לדעת יותר?',
       wantMoreText: 'צור איתנו קשר לקבלת מידע נוסף, מחירים מדויקים והזמנות',
-      contactNow: 'צור קשר עכשיו'
+      contactNow: 'צור קשר עכשיו',
+      comingSoon: 'יעלה בקרוב',
+      comingSoonText: 'עמוד המוצרים נמצא כעת בפיתוח ויעלה בקרוב. תודה על הסבלנות!'
     },
     gallery: {
       title: 'גלריית תמונות',
@@ -164,7 +167,11 @@ export const translations = {
       placeholderMessage: 'כתוב את הודעתך כאן...',
       workingHours: 'ראשון - חמישי: 09:00 - 18:00',
       friday: 'שישי: 09:00 - 14:00',
-      emergency: 'שירות חירום: 24/7'
+      emergency: 'שירות חירום: 24/7',
+      clickToWhatsApp: 'לחץ כדי לפתוח וואטסאפ',
+      facebook: 'פייסבוק',
+      visitFacebook: 'בקר בעמוד הפייסבוק שלנו',
+      followUs: 'עקבו אחרינו בפייסבוק'
     },
     payment: {
       checkout: 'תשלום',
@@ -180,6 +187,31 @@ export const translations = {
       order: 'הזמנה',
       backToHome: 'חזור לעמוד הבית',
       backToProducts: 'חזור למוצרים'
+    },
+    servicePayment: {
+      title: 'תשלום עבור השירות',
+      subtitle: 'מלא את הפרטים ולאחר מכן תוכל לבצע תשלום.',
+      fullName: 'שם מלא *',
+      passportNumber: 'מספר דרכון *',
+      phoneNumber: 'מספר טלפון *',
+      arrivalDate: 'תאריך הגעה לישראל *',
+      workplace: 'מקום עבודה *',
+      continuePayment: 'המשך לתשלום',
+      whatsappButton: '💬 דברו איתנו בוואטסאפ לתשלום',
+      whatsappNote: 'אם אין לך כרטיס אשראי מקומי, נציג יעזור לך להשלים תשלום.',
+      phoneError: 'נא להזין מספר בפורמט ישראלי שמתחיל ב-0 (לדוגמה: 0501234567)',
+      requiredField: 'שדה חובה',
+      loading: 'טוען...',
+      summary: 'סיכום פרטים',
+      orderId: 'מספר הזמנה',
+      amount: 'סכום',
+      phonePlaceholder: '0501234567',
+      errorPricing: 'לא נמצא מחיר למספר טלפון זה. אנא פנה אלינו בוואטסאפ להשלמת התשלום.',
+      errorGeneral: 'אירעה שגיאה. אנא נסה שוב.',
+      name: 'שם',
+      phone: 'טלפון',
+      arrivalDate: 'תאריך הגעה',
+      workplace: 'מקום עבודה'
     }
   },
   en: {
@@ -188,7 +220,8 @@ export const translations = {
       about: 'About',
       products: 'Products',
       gallery: 'Gallery',
-      contact: 'Contact'
+      contact: 'Contact',
+      servicePayment: 'Service Payment'
     },
     home: {
       welcome: 'Welcome to Smartpone',
@@ -310,7 +343,9 @@ export const translations = {
       lowFee: 'Low fee',
       wantMore: 'Want to Know More?',
       wantMoreText: 'Contact us for more information, accurate prices, and orders',
-      contactNow: 'Contact Us Now'
+      contactNow: 'Contact Us Now',
+      comingSoon: 'Coming Soon',
+      comingSoonText: 'The products page is currently under development and will be available soon. Thank you for your patience!'
     },
     gallery: {
       title: 'Photo Gallery',
@@ -347,7 +382,11 @@ export const translations = {
       placeholderMessage: 'Write your message here...',
       workingHours: 'Sunday - Thursday: 09:00 - 18:00',
       friday: 'Friday: 09:00 - 14:00',
-      emergency: 'Emergency Service: 24/7'
+      emergency: 'Emergency Service: 24/7',
+      clickToWhatsApp: 'Click to open WhatsApp',
+      facebook: 'Facebook',
+      visitFacebook: 'Visit our Facebook page',
+      followUs: 'Follow us on Facebook'
     },
     payment: {
       checkout: 'Checkout',
@@ -363,6 +402,31 @@ export const translations = {
       order: 'Order',
       backToHome: 'Back to Home',
       backToProducts: 'Back to Products'
+    },
+    servicePayment: {
+      title: 'Service Payment',
+      subtitle: 'Fill in the details and then you can make a payment.',
+      fullName: 'Full Name *',
+      passportNumber: 'Passport Number *',
+      phoneNumber: 'Phone Number *',
+      arrivalDate: 'Arrival Date to Israel *',
+      workplace: 'Workplace *',
+      continuePayment: 'Continue to Payment',
+      whatsappButton: '💬 Contact us on WhatsApp for payment',
+      whatsappNote: 'If you don\'t have a local credit card, a representative will help you complete the payment.',
+      phoneError: 'Please enter a number in Israeli format starting with 0 (e.g., 0501234567)',
+      requiredField: 'Required field',
+      loading: 'Loading...',
+      summary: 'Summary',
+      orderId: 'Order Number',
+      amount: 'Amount',
+      phonePlaceholder: '0501234567',
+      errorPricing: 'No pricing found for this phone number. Please contact us on WhatsApp to complete the payment.',
+      errorGeneral: 'An error occurred. Please try again.',
+      name: 'Name',
+      phone: 'Phone',
+      arrivalDate: 'Arrival Date',
+      workplace: 'Workplace'
     }
   },
   th: {
@@ -371,7 +435,8 @@ export const translations = {
       about: 'เกี่ยวกับเรา',
       products: 'ผลิตภัณฑ์',
       gallery: 'แกลเลอรี',
-      contact: 'ติดต่อ'
+      contact: 'ติดต่อ',
+      servicePayment: 'ชำระเงินสำหรับบริการ'
     },
     home: {
       welcome: 'ยินดีต้อนรับสู่ Smartpone',
@@ -493,7 +558,9 @@ export const translations = {
       lowFee: 'ค่าธรรมเนียมต่ำ',
       wantMore: 'ต้องการทราบข้อมูลเพิ่มเติม?',
       wantMoreText: 'ติดต่อเราสำหรับข้อมูลเพิ่มเติม ราคาที่แน่นอน และการสั่งซื้อ',
-      contactNow: 'ติดต่อเราตอนนี้'
+      contactNow: 'ติดต่อเราตอนนี้',
+      comingSoon: 'เร็วๆ นี้',
+      comingSoonText: 'หน้าสินค้ากำลังอยู่ระหว่างการพัฒนาและจะเปิดให้บริการเร็วๆ นี้ ขอบคุณสำหรับความอดทนของคุณ!'
     },
     gallery: {
       title: 'แกลเลอรีภาพถ่าย',
@@ -530,7 +597,11 @@ export const translations = {
       placeholderMessage: 'เขียนข้อความของคุณที่นี่...',
       workingHours: 'อาทิตย์ - พฤหัสบดี: 09:00 - 18:00',
       friday: 'ศุกร์: 09:00 - 14:00',
-      emergency: 'บริการฉุกเฉิน: 24/7'
+      emergency: 'บริการฉุกเฉิน: 24/7',
+      clickToWhatsApp: 'คลิกเพื่อเปิด WhatsApp',
+      facebook: 'Facebook',
+      visitFacebook: 'เยี่ยมชมหน้า Facebook ของเรา',
+      followUs: 'ติดตามเราบน Facebook'
     },
     payment: {
       checkout: 'ชำระเงิน',
@@ -546,6 +617,31 @@ export const translations = {
       order: 'คำสั่งซื้อ',
       backToHome: 'กลับไปหน้าหลัก',
       backToProducts: 'กลับไปหน้าสินค้า'
+    },
+    servicePayment: {
+      title: 'ชำระเงินสำหรับบริการ',
+      subtitle: 'กรอกข้อมูลแล้วคุณสามารถชำระเงินได้',
+      fullName: 'ชื่อเต็ม *',
+      passportNumber: 'หมายเลขหนังสือเดินทาง *',
+      phoneNumber: 'หมายเลขโทรศัพท์ *',
+      arrivalDate: 'วันที่มาถึงอิสราเอล *',
+      workplace: 'สถานที่ทำงาน *',
+      continuePayment: 'ดำเนินการชำระเงิน',
+      whatsappButton: '💬 ติดต่อเราบน WhatsApp เพื่อชำระเงิน',
+      whatsappNote: 'หากคุณไม่มีบัตรเครดิตท้องถิ่น ตัวแทนจะช่วยคุณชำระเงิน',
+      phoneError: 'กรุณาใส่หมายเลขในรูปแบบอิสราเอลที่ขึ้นต้นด้วย 0 (เช่น 0501234567)',
+      requiredField: 'ช่องที่จำเป็น',
+      loading: 'กำลังโหลด...',
+      summary: 'สรุปข้อมูล',
+      orderId: 'หมายเลขคำสั่งซื้อ',
+      amount: 'จำนวนเงิน',
+      phonePlaceholder: '0501234567',
+      errorPricing: 'ไม่พบราคาสำหรับหมายเลขโทรศัพท์นี้ กรุณาติดต่อเราบน WhatsApp เพื่อชำระเงิน',
+      errorGeneral: 'เกิดข้อผิดพลาด กรุณาลองอีกครั้ง',
+      name: 'ชื่อ',
+      phone: 'โทรศัพท์',
+      arrivalDate: 'วันที่มาถึง',
+      workplace: 'สถานที่ทำงาน'
     }
   }
 }

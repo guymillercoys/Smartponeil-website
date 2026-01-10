@@ -66,7 +66,7 @@ export const handler = async (event) => {
     // Handle service requests
     const { data: serviceRequest, error: selectError } = await supabase
       .from('service_requests')
-      .select('order_id')
+      .select('order_id, phone, amount, currency, telegram_paid_notified_at, telegram_failed_notified_at')
       .eq('notify_token', token)
       .single();
 
@@ -82,12 +82,25 @@ export const handler = async (event) => {
     }
 
     const orderId = serviceRequest.order_id;
+    const now = new Date().toISOString();
+
+    // Extract failure reason (best effort)
+    let failureReason = "Unknown";
+    if (!isPaid) {
+      const reasonFields = ['Error', 'err', 'Message', 'message', 'ResponseText', 'description', 'error'];
+      for (const field of reasonFields) {
+        if (parsed[field]) {
+          failureReason = String(parsed[field]);
+          break;
+        }
+      }
+    }
 
     // Update service request with status, payload, and paid_at
     const updateData = {
       status,
       tranzila_payload: parsed,
-      paid_at: isPaid ? new Date().toISOString() : null
+      paid_at: isPaid ? now : null
     };
 
     const { error: updateError } = await supabase
@@ -99,6 +112,34 @@ export const handler = async (event) => {
       console.log({ token, status, orderId, error: updateError.message });
     } else {
       console.log({ token, status, orderId });
+      
+      // Send Telegram notifications (deduplicated)
+      try {
+        const { sendTelegram } = await import('./_lib/telegram.js');
+        
+        if (isPaid && !serviceRequest.telegram_paid_notified_at) {
+          const telegramText = `✅ Payment received\nOrder: ${orderId}\nPhone: ${serviceRequest.phone}\nAmount: ${serviceRequest.amount} ${serviceRequest.currency || 1}\nTime: ${now}`;
+          await sendTelegram(telegramText);
+          
+          // Update telegram_paid_notified_at
+          await supabase
+            .from('service_requests')
+            .update({ telegram_paid_notified_at: now })
+            .eq('notify_token', token);
+        } else if (!isPaid && !serviceRequest.telegram_failed_notified_at) {
+          const telegramText = `❌ Payment failed\nOrder: ${orderId}\nPhone: ${serviceRequest.phone}\nAmount: ${serviceRequest.amount} ${serviceRequest.currency || 1}\nReason: ${failureReason}\nTime: ${now}`;
+          await sendTelegram(telegramText);
+          
+          // Update telegram_failed_notified_at
+          await supabase
+            .from('service_requests')
+            .update({ telegram_failed_notified_at: now })
+            .eq('notify_token', token);
+        }
+      } catch (telegramError) {
+        // Fail gracefully
+        console.log("Telegram notification failed:", telegramError.message);
+      }
     }
   } else {
     // Handle product orders (existing behavior)

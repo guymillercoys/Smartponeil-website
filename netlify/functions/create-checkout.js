@@ -141,8 +141,8 @@ export const handler = async (event) => {
     cred_type: '1',
     tranmode: 'A',
     accessibility: '2',
-    success_url_address: `${siteUrl}/payment/success?order=${orderId}`,
-    fail_url_address: `${siteUrl}/payment/failure?order=${orderId}`,
+    success_url_address: `${siteUrl}/payment/success.html?order=${orderId}`,
+    fail_url_address: `${siteUrl}/payment/failure.html?order=${orderId}`,
     notify_url_address: `${siteUrl}/.netlify/functions/tranzila-notify?token=${notifyToken}`,
     Z_field: zField
   });

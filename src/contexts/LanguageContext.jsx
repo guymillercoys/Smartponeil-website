@@ -14,7 +14,7 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
     // שמירת השפה ב-localStorage
     const saved = localStorage.getItem('language')
-    return saved || 'he' // ברירת מחדל: עברית
+    return saved || 'th' // ברירת מחדל: תאילנדית
   })
 
   useEffect(() => {
