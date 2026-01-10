@@ -84,8 +84,10 @@
     const order = params.get('order') || '';
     const target = `/service-payment?status=failure&order=${encodeURIComponent(order)}`;
     if (window.top !== window.self) {
-      // Inside iframe - break out and redirect
-      window.top.location.href = target;
+      // Inside iframe - break out and redirect after delay to show message
+      setTimeout(() => {
+        window.top.location.href = target;
+      }, 10000); // 10 seconds - gives user time to read the message
     } else {
       // Not in iframe - redirect after a delay to show message
       setTimeout(() => {

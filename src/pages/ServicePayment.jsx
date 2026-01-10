@@ -127,23 +127,31 @@ function ServicePayment() {
       // Clean phone before sending
       const cleanedPhone = cleanPhone(formData.phoneNumber)
       
+      // Prepare request body - only send non-empty optional fields
+      const requestBody = {
+        fullName: formData.fullName.trim(),
+        phone: cleanedPhone,
+        passportNumber: formData.passportNumber?.trim() || '',
+        arrivalDate: formData.arrivalDate || '',
+        workplace: formData.workplace?.trim() || ''
+      }
+      
+      console.log('Sending payment request:', { ...requestBody, phone: '***' }) // Don't log full phone
+      
       const response = await fetch('/.netlify/functions/create-service-checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          fullName: formData.fullName.trim(),
-          passportNumber: formData.passportNumber?.trim() || '',
-          phone: cleanedPhone,
-          arrivalDate: formData.arrivalDate || '',
-          workplace: formData.workplace?.trim() || ''
-        })
+        body: JSON.stringify(requestBody)
       })
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}))
         const errorMessage = errorData.error || 'שגיאה ביצירת תשלום'
+        
+        // Log error for debugging
+        console.error('Payment error:', errorMessage, errorData)
         
         // If pricing not found, suggest WhatsApp
         if (errorMessage.includes('pricing') || errorMessage.includes('No pricing')) {
