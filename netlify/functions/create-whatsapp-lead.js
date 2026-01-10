@@ -116,11 +116,23 @@ export const handler = async (event) => {
     .single();
 
   if (insertError) {
+    // Log the error for debugging
+    console.error('Supabase insert error:', insertError);
+    console.error('Insert data:', {
+      full_name: fullName.trim(),
+      passport_number: passportNumber?.trim() || null,
+      phone: cleanedPhone,
+      workplace: workplace?.trim() || null,
+      message_template: messageTemplate.trim(),
+      page: 'service-payment'
+    });
+    
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: 'Failed to create WhatsApp lead'
+        error: 'Failed to create WhatsApp lead',
+        details: insertError.message || 'Unknown error'
       })
     };
   }
