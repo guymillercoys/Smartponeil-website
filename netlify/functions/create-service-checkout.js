@@ -111,10 +111,11 @@ export const handler = async (event) => {
 
   const cleanedPhone = validation.cleaned;
 
-  // Normalize optional fields - convert empty strings to null
-  const normalizedPassportNumber = (passportNumber && passportNumber.trim()) ? passportNumber.trim() : null;
-  const normalizedArrivalDate = (arrivalDate && arrivalDate.trim()) ? arrivalDate : null;
-  const normalizedWorkplace = (workplace && workplace.trim()) ? workplace.trim() : null;
+  // Normalize optional fields - keep as empty string if not provided (columns may be NOT NULL)
+  // If the database columns allow null, we can change this to null, but for now use empty strings
+  const normalizedPassportNumber = (passportNumber && passportNumber.trim()) ? passportNumber.trim() : '';
+  const normalizedArrivalDate = (arrivalDate && arrivalDate.trim()) ? arrivalDate : '';
+  const normalizedWorkplace = (workplace && workplace.trim()) ? workplace.trim() : '';
 
   // Create Supabase client
   const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
