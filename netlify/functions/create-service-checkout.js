@@ -111,6 +111,11 @@ export const handler = async (event) => {
 
   const cleanedPhone = validation.cleaned;
 
+  // Normalize optional fields - convert empty strings to null
+  const normalizedPassportNumber = (passportNumber && passportNumber.trim()) ? passportNumber.trim() : null;
+  const normalizedArrivalDate = (arrivalDate && arrivalDate.trim()) ? arrivalDate : null;
+  const normalizedWorkplace = (workplace && workplace.trim()) ? workplace.trim() : null;
+
   // Create Supabase client
   const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
@@ -138,10 +143,10 @@ export const handler = async (event) => {
     .insert({
       status: 'pending_payment',
       full_name: fullName.trim(),
-      passport_number: passportNumber?.trim() || null,
+      passport_number: normalizedPassportNumber,
       phone: cleanedPhone,
-      arrival_date: arrivalDate || null,
-      workplace: workplace?.trim() || null,
+      arrival_date: normalizedArrivalDate,
+      workplace: normalizedWorkplace,
       amount: finalAmount,
       currency: finalCurrency,
       order_id: orderId,
@@ -151,12 +156,27 @@ export const handler = async (event) => {
     .single();
 
   if (insertError) {
+    // Log the error for debugging
+    console.error('Supabase insert error:', insertError);
+    console.error('Insert data:', {
+      status: 'pending_payment',
+      full_name: fullName.trim(),
+      passport_number: normalizedPassportNumber,
+      phone: cleanedPhone,
+      arrival_date: normalizedArrivalDate,
+      workplace: normalizedWorkplace,
+      amount: finalAmount,
+      currency: finalCurrency,
+      order_id: orderId
+    });
+    
     // Don't expose stack traces or internal errors
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: 'Failed to create service request'
+        error: 'Failed to create service request',
+        details: insertError.message || 'Unknown error'
       })
     };
   }
