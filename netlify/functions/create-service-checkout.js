@@ -115,6 +115,7 @@ export const handler = async (event) => {
   // For text fields, use empty string if column is NOT NULL, or null if nullable
   const normalizedPassportNumber = (passportNumber && passportNumber.trim()) ? passportNumber.trim() : '';
   const normalizedWorkplace = (workplace && workplace.trim()) ? workplace.trim() : '';
+  // Note: arrival_date is not sent - column should be nullable or removed from DB
 
   // Create Supabase client
   const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
@@ -145,6 +146,7 @@ export const handler = async (event) => {
       full_name: fullName.trim(),
       passport_number: normalizedPassportNumber,
       phone: cleanedPhone,
+      // arrival_date is not included - column should be nullable or removed from DB
       workplace: normalizedWorkplace,
       amount: finalAmount,
       currency: finalCurrency,
