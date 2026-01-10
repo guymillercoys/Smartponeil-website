@@ -99,14 +99,18 @@ export const handler = async (event) => {
   const referrer = event.headers?.referer || event.headers?.Referer || null;
   const ua = event.headers?.['user-agent'] || event.headers?.['User-Agent'] || null;
 
+  // Normalize optional fields - use empty string if NOT NULL, null if nullable
+  const normalizedPassportNumber = (passportNumber && passportNumber.trim()) ? passportNumber.trim() : '';
+  const normalizedWorkplace = (workplace && workplace.trim()) ? workplace.trim() : '';
+
   // Insert into whatsapp_leads
   const { data: leadData, error: insertError } = await supabase
     .from('whatsapp_leads')
     .insert({
       full_name: fullName.trim(),
-      passport_number: passportNumber?.trim() || null,
+      passport_number: normalizedPassportNumber,
       phone: cleanedPhone,
-      workplace: workplace?.trim() || null,
+      workplace: normalizedWorkplace,
       message_template: messageTemplate.trim(),
       page: 'service-payment',
       referrer: referrer,
@@ -120,9 +124,9 @@ export const handler = async (event) => {
     console.error('Supabase insert error:', insertError);
     console.error('Insert data:', {
       full_name: fullName.trim(),
-      passport_number: passportNumber?.trim() || null,
+      passport_number: normalizedPassportNumber,
       phone: cleanedPhone,
-      workplace: workplace?.trim() || null,
+      workplace: normalizedWorkplace,
       message_template: messageTemplate.trim(),
       page: 'service-payment'
     });
