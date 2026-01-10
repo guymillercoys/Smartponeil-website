@@ -81,7 +81,7 @@ export const handler = async (event) => {
   }
 
   // Validate required fields
-  const { fullName, passportNumber, phone, arrivalDate, workplace } = body;
+  const { fullName, passportNumber, phone, workplace } = body;
 
   if (!fullName || !fullName.trim()) {
     return {
@@ -112,10 +112,8 @@ export const handler = async (event) => {
   const cleanedPhone = validation.cleaned;
 
   // Normalize optional fields
-  // For date fields, must use null (not empty string) as date type doesn't accept empty strings
   // For text fields, use empty string if column is NOT NULL, or null if nullable
   const normalizedPassportNumber = (passportNumber && passportNumber.trim()) ? passportNumber.trim() : '';
-  const normalizedArrivalDate = (arrivalDate && arrivalDate.trim()) ? arrivalDate : null; // Date must be null, not empty string
   const normalizedWorkplace = (workplace && workplace.trim()) ? workplace.trim() : '';
 
   // Create Supabase client
@@ -147,7 +145,6 @@ export const handler = async (event) => {
       full_name: fullName.trim(),
       passport_number: normalizedPassportNumber,
       phone: cleanedPhone,
-      arrival_date: normalizedArrivalDate,
       workplace: normalizedWorkplace,
       amount: finalAmount,
       currency: finalCurrency,
@@ -165,7 +162,6 @@ export const handler = async (event) => {
       full_name: fullName.trim(),
       passport_number: normalizedPassportNumber,
       phone: cleanedPhone,
-      arrival_date: normalizedArrivalDate,
       workplace: normalizedWorkplace,
       amount: finalAmount,
       currency: finalCurrency,

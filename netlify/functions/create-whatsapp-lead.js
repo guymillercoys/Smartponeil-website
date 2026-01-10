@@ -54,7 +54,7 @@ export const handler = async (event) => {
   }
 
   // Validate required fields
-  const { fullName, passportNumber, phone, arrivalDate, workplace, messageTemplate } = body;
+  const { fullName, passportNumber, phone, workplace, messageTemplate } = body;
 
   if (!fullName || !fullName.trim()) {
     return {
@@ -106,7 +106,6 @@ export const handler = async (event) => {
       full_name: fullName.trim(),
       passport_number: passportNumber?.trim() || null,
       phone: cleanedPhone,
-      arrival_date: arrivalDate || null,
       workplace: workplace?.trim() || null,
       message_template: messageTemplate.trim(),
       page: 'service-payment',
@@ -130,7 +129,7 @@ export const handler = async (event) => {
   try {
     const { sendTelegram } = await import('./_lib/telegram.js');
     const now = new Date().toISOString();
-    const telegramText = `📲 WhatsApp lead\nName: ${fullName.trim()}\nPhone: ${cleanedPhone}\nPassport: ${passportNumber?.trim() || 'N/A'}\nArrival: ${arrivalDate || 'N/A'}\nWorkplace: ${workplace?.trim() || 'N/A'}\nTime: ${now}`;
+    const telegramText = `📲 WhatsApp lead\nName: ${fullName.trim()}\nPhone: ${cleanedPhone}\nPassport: ${passportNumber?.trim() || 'N/A'}\nWorkplace: ${workplace?.trim() || 'N/A'}\nTime: ${now}`;
     
     await sendTelegram(telegramText);
     

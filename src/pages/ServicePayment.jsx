@@ -10,7 +10,6 @@ function ServicePayment() {
     fullName: '',
     passportNumber: '',
     phoneNumber: '',
-    arrivalDate: '',
     workplace: ''
   })
   const [errors, setErrors] = useState({})
@@ -132,7 +131,6 @@ function ServicePayment() {
         fullName: formData.fullName.trim(),
         phone: cleanedPhone,
         passportNumber: formData.passportNumber?.trim() || '',
-        arrivalDate: formData.arrivalDate || '',
         workplace: formData.workplace?.trim() || ''
       }
       
@@ -204,7 +202,6 @@ function ServicePayment() {
           fullName: formData.fullName.trim(),
           passportNumber: formData.passportNumber?.trim() || '',
           phone: cleanedPhone,
-          arrivalDate: formData.arrivalDate || '',
           workplace: formData.workplace?.trim() || '',
           messageTemplate: messageTemplate
         })
@@ -275,17 +272,6 @@ function ServicePayment() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="arrivalDate">{t.servicePayment.arrivalDate}</label>
-                <input
-                  type="date"
-                  id="arrivalDate"
-                  name="arrivalDate"
-                  value={formData.arrivalDate}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <div className="form-group">
                 <label htmlFor="workplace">{t.servicePayment.workplace}</label>
                 <input
                   type="text"
@@ -346,11 +332,6 @@ function ServicePayment() {
                 {formData.passportNumber && (
                   <div className="summary-item">
                     <strong>{t.servicePayment.passportNumber}:</strong> {formData.passportNumber}
-                  </div>
-                )}
-                {formData.arrivalDate && (
-                  <div className="summary-item">
-                    <strong>{t.servicePayment.arrivalDate}:</strong> {formData.arrivalDate}
                   </div>
                 )}
                 {formData.workplace && (
