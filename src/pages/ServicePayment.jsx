@@ -134,10 +134,10 @@ function ServicePayment() {
         },
         body: JSON.stringify({
           fullName: formData.fullName.trim(),
-          passportNumber: formData.passportNumber.trim(),
+          passportNumber: formData.passportNumber?.trim() || '',
           phone: cleanedPhone,
-          arrivalDate: formData.arrivalDate,
-          workplace: formData.workplace.trim()
+          arrivalDate: formData.arrivalDate || '',
+          workplace: formData.workplace?.trim() || ''
         })
       })
 
@@ -194,10 +194,10 @@ function ServicePayment() {
         },
         body: JSON.stringify({
           fullName: formData.fullName.trim(),
-          passportNumber: formData.passportNumber.trim(),
+          passportNumber: formData.passportNumber?.trim() || '',
           phone: cleanedPhone,
-          arrivalDate: formData.arrivalDate,
-          workplace: formData.workplace.trim(),
+          arrivalDate: formData.arrivalDate || '',
+          workplace: formData.workplace?.trim() || '',
           messageTemplate: messageTemplate
         })
       })

@@ -161,8 +161,8 @@ export const handler = async (event) => {
     };
   }
 
-  // Get SITE_URL
-  const siteUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || 'http://localhost:8888';
+  // Get production domain (use env var if available, otherwise use production domain)
+  const productionDomain = process.env.URL || 'https://smartponeil.com';
 
   // Build Tranzila iframe URL
   const baseUrl = `https://direct.tranzila.com/${terminalName}/iframe.php`;
@@ -172,9 +172,9 @@ export const handler = async (event) => {
     cred_type: '1',
     tranmode: 'A',
     accessibility: '2',
-    success_url_address: `${siteUrl}/payment/success.html?order=${orderId}`,
-    fail_url_address: `${siteUrl}/payment/failure.html?order=${orderId}`,
-    notify_url_address: `${siteUrl}/.netlify/functions/tranzila-notify?token=${notifyToken}&source=service`,
+    success_url_address: `${productionDomain}/.netlify/functions/tranzila-return?result=success&order=${orderId}`,
+    fail_url_address: `${productionDomain}/.netlify/functions/tranzila-return?result=failure&order=${orderId}`,
+    notify_url_address: `${productionDomain}/.netlify/functions/tranzila-notify?token=${notifyToken}&source=service`,
     Z_field: `${orderId}|service|${cleanedPhone}`
   });
 

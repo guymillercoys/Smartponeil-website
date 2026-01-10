@@ -87,10 +87,10 @@
       // Inside iframe - break out and redirect
       window.top.location.href = target;
     } else {
-      // Not in iframe - redirect after a short delay to show message
+      // Not in iframe - redirect after a delay to show message
       setTimeout(() => {
         window.location.href = target;
-      }, 2000);
+      }, 10000); // 10 seconds - gives user time to read the message
     }
   </script>
 </body>
