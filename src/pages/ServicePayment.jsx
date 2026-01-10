@@ -62,10 +62,6 @@ function ServicePayment() {
       newErrors.fullName = t.servicePayment.requiredField
     }
 
-    if (!formData.passportNumber.trim()) {
-      newErrors.passportNumber = t.servicePayment.requiredField
-    }
-
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = t.servicePayment.requiredField
     } else {
@@ -75,14 +71,6 @@ function ServicePayment() {
       }
     }
 
-    if (!formData.arrivalDate) {
-      newErrors.arrivalDate = t.servicePayment.requiredField
-    }
-
-    if (!formData.workplace.trim()) {
-      newErrors.workplace = t.servicePayment.requiredField
-    }
-
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -90,10 +78,7 @@ function ServicePayment() {
   // Check if form is valid (all required fields filled and phone valid)
   const isFormValid = () => {
     if (!formData.fullName.trim()) return false
-    if (!formData.passportNumber.trim()) return false
     if (!formData.phoneNumber.trim()) return false
-    if (!formData.arrivalDate) return false
-    if (!formData.workplace.trim()) return false
     
     // Validate phone
     const phoneValidation = validatePhone(formData.phoneNumber)
@@ -289,9 +274,7 @@ function ServicePayment() {
                   name="arrivalDate"
                   value={formData.arrivalDate}
                   onChange={handleInputChange}
-                  className={errors.arrivalDate ? 'error' : ''}
                 />
-                {errors.arrivalDate && <span className="error-message">{errors.arrivalDate}</span>}
               </div>
 
               <div className="form-group">
@@ -302,9 +285,7 @@ function ServicePayment() {
                   name="workplace"
                   value={formData.workplace}
                   onChange={handleInputChange}
-                  className={errors.workplace ? 'error' : ''}
                 />
-                {errors.workplace && <span className="error-message">{errors.workplace}</span>}
               </div>
 
               <div className="payment-branch">
@@ -354,12 +335,21 @@ function ServicePayment() {
                 <div className="summary-item">
                   <strong>{t.servicePayment.phone}:</strong> {formData.phoneNumber}
                 </div>
-                <div className="summary-item">
-                  <strong>{t.servicePayment.arrivalDate}:</strong> {formData.arrivalDate}
-                </div>
-                <div className="summary-item">
-                  <strong>{t.servicePayment.workplace}:</strong> {formData.workplace}
-                </div>
+                {formData.passportNumber && (
+                  <div className="summary-item">
+                    <strong>{t.servicePayment.passportNumber}:</strong> {formData.passportNumber}
+                  </div>
+                )}
+                {formData.arrivalDate && (
+                  <div className="summary-item">
+                    <strong>{t.servicePayment.arrivalDate}:</strong> {formData.arrivalDate}
+                  </div>
+                )}
+                {formData.workplace && (
+                  <div className="summary-item">
+                    <strong>{t.servicePayment.workplace}:</strong> {formData.workplace}
+                  </div>
+                )}
                 {orderId && (
                   <div className="summary-item">
                     <strong>{t.servicePayment.orderId}:</strong> {orderId}

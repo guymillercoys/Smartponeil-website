@@ -91,35 +91,11 @@ export const handler = async (event) => {
     };
   }
 
-  if (!passportNumber || !passportNumber.trim()) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'Missing or empty field: passportNumber' })
-    };
-  }
-
   if (!phone || !phone.trim()) {
     return {
       statusCode: 400,
       headers,
       body: JSON.stringify({ error: 'Missing or empty field: phone' })
-    };
-  }
-
-  if (!arrivalDate || !arrivalDate.trim()) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'Missing or empty field: arrivalDate' })
-    };
-  }
-
-  if (!workplace || !workplace.trim()) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'Missing or empty field: workplace' })
     };
   }
 
@@ -146,13 +122,9 @@ export const handler = async (event) => {
     .eq('active', true)
     .single();
 
-  if (pricingError || !pricing) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'No pricing found for this phone' })
-    };
-  }
+  // Use default pricing if not found (90 ILS)
+  const finalAmount = pricing?.amount || 90;
+  const finalCurrency = pricing?.currency || 1; // 1 = ILS
 
   // Generate orderId and notifyToken
   const timestamp = Date.now();
@@ -166,12 +138,12 @@ export const handler = async (event) => {
     .insert({
       status: 'pending_payment',
       full_name: fullName.trim(),
-      passport_number: passportNumber.trim(),
+      passport_number: passportNumber?.trim() || null,
       phone: cleanedPhone,
-      arrival_date: arrivalDate,
-      workplace: workplace.trim(),
-      amount: pricing.amount,
-      currency: pricing.currency,
+      arrival_date: arrivalDate || null,
+      workplace: workplace?.trim() || null,
+      amount: finalAmount,
+      currency: finalCurrency,
       order_id: orderId,
       notify_token: notifyToken
     })
@@ -195,8 +167,8 @@ export const handler = async (event) => {
   // Build Tranzila iframe URL
   const baseUrl = `https://direct.tranzila.com/${terminalName}/iframe.php`;
   const params = new URLSearchParams({
-    sum: pricing.amount.toString(),
-    currency: (pricing.currency || 1).toString(),
+    sum: finalAmount.toString(),
+    currency: finalCurrency.toString(),
     cred_type: '1',
     tranmode: 'A',
     accessibility: '2',
@@ -221,8 +193,8 @@ export const handler = async (event) => {
     body: JSON.stringify({
       orderId,
       phone: cleanedPhone,
-      amount: pricing.amount,
-      currency: pricing.currency,
+      amount: finalAmount,
+      currency: finalCurrency,
       url: iframeUrl
     })
   };

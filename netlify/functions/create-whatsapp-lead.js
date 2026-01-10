@@ -64,35 +64,11 @@ export const handler = async (event) => {
     };
   }
 
-  if (!passportNumber || !passportNumber.trim()) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'Missing or empty field: passportNumber' })
-    };
-  }
-
   if (!phone || !phone.trim()) {
     return {
       statusCode: 400,
       headers,
       body: JSON.stringify({ error: 'Missing or empty field: phone' })
-    };
-  }
-
-  if (!arrivalDate || !arrivalDate.trim()) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'Missing or empty field: arrivalDate' })
-    };
-  }
-
-  if (!workplace || !workplace.trim()) {
-    return {
-      statusCode: 400,
-      headers,
-      body: JSON.stringify({ error: 'Missing or empty field: workplace' })
     };
   }
 
@@ -128,10 +104,10 @@ export const handler = async (event) => {
     .from('whatsapp_leads')
     .insert({
       full_name: fullName.trim(),
-      passport_number: passportNumber.trim(),
+      passport_number: passportNumber?.trim() || null,
       phone: cleanedPhone,
-      arrival_date: arrivalDate,
-      workplace: workplace.trim(),
+      arrival_date: arrivalDate || null,
+      workplace: workplace?.trim() || null,
       message_template: messageTemplate.trim(),
       page: 'service-payment',
       referrer: referrer,
@@ -154,7 +130,7 @@ export const handler = async (event) => {
   try {
     const { sendTelegram } = await import('./_lib/telegram.js');
     const now = new Date().toISOString();
-    const telegramText = `📲 WhatsApp lead\nName: ${fullName.trim()}\nPhone: ${cleanedPhone}\nPassport: ${passportNumber.trim()}\nArrival: ${arrivalDate}\nWorkplace: ${workplace.trim()}\nTime: ${now}`;
+    const telegramText = `📲 WhatsApp lead\nName: ${fullName.trim()}\nPhone: ${cleanedPhone}\nPassport: ${passportNumber?.trim() || 'N/A'}\nArrival: ${arrivalDate || 'N/A'}\nWorkplace: ${workplace?.trim() || 'N/A'}\nTime: ${now}`;
     
     await sendTelegram(telegramText);
     
