@@ -111,10 +111,11 @@ export const handler = async (event) => {
 
   const cleanedPhone = validation.cleaned;
 
-  // Normalize optional fields - keep as empty string if not provided (columns may be NOT NULL)
-  // If the database columns allow null, we can change this to null, but for now use empty strings
+  // Normalize optional fields
+  // For date fields, must use null (not empty string) as date type doesn't accept empty strings
+  // For text fields, use empty string if column is NOT NULL, or null if nullable
   const normalizedPassportNumber = (passportNumber && passportNumber.trim()) ? passportNumber.trim() : '';
-  const normalizedArrivalDate = (arrivalDate && arrivalDate.trim()) ? arrivalDate : '';
+  const normalizedArrivalDate = (arrivalDate && arrivalDate.trim()) ? arrivalDate : null; // Date must be null, not empty string
   const normalizedWorkplace = (workplace && workplace.trim()) ? workplace.trim() : '';
 
   // Create Supabase client
