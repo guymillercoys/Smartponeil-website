@@ -185,7 +185,7 @@ export const handler = async (event) => {
   const productionDomain = process.env.URL || 'https://smartponeil.com';
 
   // Build Tranzila iframe URL
-  const baseUrl = `https://direct.tranzila.com/${terminalName}/iframe.php`;
+  const baseUrl = `https://direct.tranzila.com/${terminalName}/iframenew.php`;
   const params = new URLSearchParams({
     sum: finalAmount.toString(),
     currency: finalCurrency.toString(),
