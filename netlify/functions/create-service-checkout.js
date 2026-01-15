@@ -206,6 +206,18 @@ export const handler = async (event) => {
     .update({ tranzila_url: iframeUrl })
     .eq('order_id', orderId);
 
+  // Send Telegram notification (non-blocking)
+  try {
+    const { sendTelegram } = await import('./_lib/telegram.js');
+    const now = new Date().toISOString();
+    const telegramText = `🧾 Checkout started\nOrder: ${orderId}\nName: ${fullName.trim()}\nPassport: ${normalizedPassportNumber || 'N/A'}\nPhone: ${cleanedPhone}\nWorkplace: ${normalizedWorkplace || 'N/A'}\nAmount: ${finalAmount} ${finalCurrency || 1}\nTime: ${now}`;
+    
+    await sendTelegram(telegramText);
+  } catch (telegramError) {
+    // Fail gracefully - don't block user
+    console.log("Telegram notification failed:", telegramError.message);
+  }
+
   // Return response
   return {
     statusCode: 200,

@@ -64,9 +64,10 @@ export const handler = async (event) => {
 
   if (source === 'service') {
     // Handle service requests
+    // Fetch full details including name, passport, workplace for Telegram notification
     const { data: serviceRequest, error: selectError } = await supabase
       .from('service_requests')
-      .select('order_id, phone, amount, currency, telegram_paid_notified_at, telegram_failed_notified_at')
+      .select('order_id, phone, amount, currency, full_name, passport_number, workplace, telegram_paid_notified_at, telegram_failed_notified_at')
       .eq('notify_token', token)
       .single();
 
@@ -118,7 +119,10 @@ export const handler = async (event) => {
         const { sendTelegram } = await import('./_lib/telegram.js');
         
         if (isPaid && !serviceRequest.telegram_paid_notified_at) {
-          const telegramText = `✅ Payment received\nOrder: ${orderId}\nPhone: ${serviceRequest.phone}\nAmount: ${serviceRequest.amount} ${serviceRequest.currency || 1}\nTime: ${now}`;
+          // Extract additional safe details from Tranzila payload (no card data)
+          const tranId = parsed.TranzilaTK || parsed.tranzila_tk || parsed.TransactionID || parsed.transaction_id || 'N/A';
+          const responseCode = parsed.Response || parsed.response || 'N/A';
+          const telegramText = `✅ Payment received\nOrder: ${orderId}\nName: ${serviceRequest.full_name || 'N/A'}\nPassport: ${serviceRequest.passport_number || 'N/A'}\nPhone: ${serviceRequest.phone}\nWorkplace: ${serviceRequest.workplace || 'N/A'}\nAmount: ${serviceRequest.amount} ${serviceRequest.currency || 1}\nTransaction ID: ${tranId}\nResponse: ${responseCode}\nTime: ${now}`;
           await sendTelegram(telegramText);
           
           // Update telegram_paid_notified_at
@@ -127,7 +131,10 @@ export const handler = async (event) => {
             .update({ telegram_paid_notified_at: now })
             .eq('notify_token', token);
         } else if (!isPaid && !serviceRequest.telegram_failed_notified_at) {
-          const telegramText = `❌ Payment failed\nOrder: ${orderId}\nPhone: ${serviceRequest.phone}\nAmount: ${serviceRequest.amount} ${serviceRequest.currency || 1}\nReason: ${failureReason}\nTime: ${now}`;
+          // Extract additional safe details from Tranzila payload (no card data)
+          const tranId = parsed.TranzilaTK || parsed.tranzila_tk || parsed.TransactionID || parsed.transaction_id || 'N/A';
+          const responseCode = parsed.Response || parsed.response || 'N/A';
+          const telegramText = `❌ Payment failed\nOrder: ${orderId}\nName: ${serviceRequest.full_name || 'N/A'}\nPassport: ${serviceRequest.passport_number || 'N/A'}\nPhone: ${serviceRequest.phone}\nWorkplace: ${serviceRequest.workplace || 'N/A'}\nAmount: ${serviceRequest.amount} ${serviceRequest.currency || 1}\nTransaction ID: ${tranId}\nResponse: ${responseCode}\nReason: ${failureReason}\nTime: ${now}`;
           await sendTelegram(telegramText);
           
           // Update telegram_failed_notified_at
@@ -137,7 +144,7 @@ export const handler = async (event) => {
             .eq('notify_token', token);
         }
       } catch (telegramError) {
-        // Fail gracefully
+        // Fail gracefully - never block the notify response
         console.log("Telegram notification failed:", telegramError.message);
       }
     }
