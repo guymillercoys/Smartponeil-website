@@ -8,6 +8,17 @@ export const translations = {
       contact: 'צור קשר',
       servicePayment: 'תשלום לשירות'
     },
+    footer: {
+      companyName: 'איצ גי אר סמארטפון בע"מ',
+      companyNameEn: 'HGR SMARTPHONE LTD',
+      companyNumber: 'ח.פ.: 517233995',
+      address: 'רחוב אלוני ניסים 6, תל אביב יפו',
+      links: 'קישורים',
+      privacy: 'מדיניות פרטיות',
+      terms: 'תנאי שימוש',
+      accessibility: 'הצהרת נגישות',
+      rights: 'כל הזכויות שמורות.'
+    },
     home: {
       welcome: 'ברוכים הבאים ל-Smartpone',
       whoWeAre: 'מי אנחנו?',
@@ -212,6 +223,174 @@ export const translations = {
       phone: 'טלפון',
       arrivalDate: 'תאריך הגעה',
       workplace: 'מקום עבודה'
+    },
+    termsOfUse: {
+      title: 'תנאי שימוש',
+      lastUpdated: 'עודכן לאחרונה',
+      general: {
+        title: 'כללי',
+        welcome: 'ברוכים הבאים לאתר של איץ גי אר סמארטפון בע"מ / HGR SMARTPHONE LTD (ח.פ. 517233995), כתובת: אלוני ניסים 6, תל אביב–יפו ("החברה", "אנחנו").',
+        agreement: 'שימוש באתר, מילוי טפסים, פתיחת שיחת WhatsApp ו/או ביצוע תשלום מהווים הסכמה לתנאי שימוש אלו ולמדיניות הפרטיות.'
+      },
+      service: {
+        title: 'השירות',
+        description: 'האתר מאפשר מילוי פרטים לצורך קבלת שירות/תשלום עבור שירות שאנחנו מספקים, וכן יצירת קשר מהיר עם העסק.'
+      },
+      userResponsibility: {
+        title: 'אחריות המשתמש',
+        description: 'המשתמש מתחייב למסור פרטים נכונים ומדויקים. מסירת פרטים שגויים עלולה לגרום לעיכוב/אי-מתן שירות.'
+      },
+      payment: {
+        title: 'תשלום וסליקה',
+        point1: 'תשלום עשוי להתבצע באמצעות ספק סליקה חיצוני (למשל Tranzila) בתוך iframe.',
+        point2: 'פרטי כרטיס האשראי מוזנים אצל ספק הסליקה בלבד; החברה אינה שומרת את פרטי הכרטיס.',
+        point3: 'אישור/דחיית העסקה נקבעים על ידי ספק הסליקה/חברת האשראי.'
+      },
+      whatsapp: {
+        title: 'יצירת קשר ב-WhatsApp',
+        description: 'אם בחרתם לפנות אלינו ב-WhatsApp, השיחה מתבצעת באמצעות WhatsApp/Meta וכפופה לתנאים ולמדיניות שלהם. החברה תשתדל להשיב בהקדם בשעות הפעילות, אך אין התחייבות לזמן מענה.'
+      },
+      availability: {
+        title: 'זמינות האתר ושינויים',
+        description: 'החברה רשאית לשנות, לעדכן או להפסיק חלקים מהאתר/השירות לפי שיקול דעתה. ייתכנו תקלות זמינות או תחזוקה.'
+      },
+      intellectualProperty: {
+        title: 'קניין רוחני',
+        description: 'כל התכנים באתר (טקסטים, עיצוב, לוגו וכו\') שייכים לחברה או לצדדים שלישיים שהרשו שימוש. אין להעתיק/להפיץ ללא אישור.'
+      },
+      liability: {
+        title: 'הגבלת אחריות',
+        description: 'השימוש באתר הוא "כפי שהוא" (AS IS). החברה לא תישא באחריות לנזקים עקיפים/תוצאתיים הנובעים משימוש באתר, בכפוף לדין החל.'
+      },
+      jurisdiction: {
+        title: 'דין וסמכות שיפוט',
+        description: 'על תנאים אלו יחול דין מדינת ישראל. סמכות השיפוט הבלעדית תהיה בבתי המשפט המוסמכים במחוז תל אביב.'
+      },
+      contact: {
+        title: 'יצירת קשר',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'טלפון: +972544449109'
+      }
+    },
+    privacyPolicy: {
+      title: 'מדיניות פרטיות',
+      lastUpdated: 'עודכן לאחרונה',
+      whoWeAre: {
+        title: 'מי אנחנו',
+        description: 'איץ גי אר סמארטפון בע"מ / HGR SMARTPHONE LTD (ח.פ. 517233995), כתובת: אלוני ניסים 6, תל אביב–יפו ("החברה", "אנחנו"), מפעילה אתר זה ואת השירותים המוצעים בו.'
+      },
+      whatThisCovers: {
+        title: 'מה מדיניות זו מכסה',
+        description: 'מדיניות זו מסבירה איזה מידע אנחנו אוספים כשמשתמשים באתר/משאירים פרטים/פותחים שיחת WhatsApp/מבצעים תשלום, למה אנחנו משתמשים בו, עם מי אנחנו משתפים אותו, וכיצד ניתן ליצור קשר לגבי פרטיות.'
+      },
+      whatWeCollect: {
+        title: 'איזה מידע אנחנו אוספים',
+        directInfo: {
+          title: 'מידע שתמסרו לנו ישירות:',
+          items: [
+            'שם מלא',
+            'מספר טלפון (בפורמט ישראלי)',
+            'מספר דרכון',
+            'מקום עבודה',
+            'פרטים נוספים שתבחרו למסור בהודעות/טפסים'
+          ]
+        },
+        technicalInfo: {
+          title: 'מידע טכני ושימושי (אוטומטית):',
+          description: 'כתובת IP, סוג דפדפן/מכשיר, דפי גלישה באתר, תאריך ושעה',
+          additional: 'לעיתים referrer (מאיפה הגעתם לאתר) ונתוני אבטחה/לוגים'
+        },
+        paymentInfo: {
+          title: 'מידע תשלום:',
+          point1: 'התשלום מתבצע באמצעות ספק סליקה חיצוני (למשל Tranzila) בתוך iframe.',
+          point2: 'פרטי כרטיס האשראי מוזנים אצל ספק הסליקה בלבד. אנחנו לא שומרים אצלנו את מספר הכרטיס/קוד CVV.'
+        }
+      },
+      whyWeUse: {
+        title: 'למה אנחנו משתמשים במידע',
+        description: 'אנחנו משתמשים במידע כדי:',
+        items: [
+          'לספק לכם את השירות שביקשתם',
+          'להציג/להפיק תשלום מתאים ולנהל את ההזמנה',
+          'ליצור איתכם קשר, תמיכה ושירות לקוחות (כולל באמצעות WhatsApp)',
+          'לבצע תיעוד תפעולי ובקרת איכות, מניעת הונאות ואבטחת מידע',
+          'לשפר את האתר והחוויה'
+        ]
+      },
+      whatsapp: {
+        title: 'WhatsApp ותקשורת',
+        description: 'אם תבחרו לפתוח שיחת WhatsApp עם העסק, התקשורת מתבצעת באמצעות WhatsApp/Meta וכפופה למדיניות ולתנאים שלהם. אנחנו עשויים לתעד אצלנו "פנייה/לחיצה ל-WhatsApp" יחד עם פרטי הטופס שמילאתם כדי לטפל בבקשה שלכם.'
+      },
+      sharing: {
+        title: 'שיתוף מידע עם צדדים שלישיים',
+        description: 'אנחנו עשויים לשתף מידע במידה הנדרשת לצורך מתן השירות, בין היתר עם:',
+        items: [
+          'ספק סליקה (למשל Tranzila) לצורך ביצוע תשלום ואימות תוצאה',
+          'ספקי תשתית/אחסון (למשל Supabase/Netlify) לצורך אחסון נתונים ותפעול האתר',
+          'מערכת CRM אליה אנו מסנכרנים פניות/הזמנות לצורך שירות וניהול תהליך',
+          'תקשורת עסקית (WhatsApp Business) לצורך מענה ותמיכה',
+          'התראות פנימיות (למשל Telegram) כדי שנדע לטפל במהירות בפניות/תשלומים'
+        ],
+        note: 'לא נמכור מידע אישי לצדדים שלישיים.'
+      },
+      retention: {
+        title: 'שמירת מידע (Retention)',
+        description: 'נשמור מידע רק כל עוד הוא נחוץ למטרות המפורטות במדיניות זו, ולפי דרישות דין/תיעוד/הגנה משפטית. אם תרצו למחוק מידע – ניתן לפנות אלינו (ראו "יצירת קשר").'
+      },
+      security: {
+        title: 'אבטחת מידע',
+        description: 'אנחנו נוקטים אמצעים סבירים להגנת מידע (כגון הגבלת גישה, מפתחות סודיים בצד שרת, ולוגים לצורכי אבטחה). יחד עם זאת, אין מערכת חסינה לחלוטין ואיננו יכולים להבטיח אבטחה מוחלטת.'
+      },
+      transfer: {
+        title: 'העברת מידע מחוץ לישראל',
+        description: 'חלק מהספקים שלנו עשויים לעבד/לאחסן מידע במדינות נוספות. אנו פועלים להשתמש בספקים מוכרים ולהגן על המידע באמצעים מקובלים.'
+      },
+      rights: {
+        title: 'זכויות ובקשות',
+        description: 'ניתן לפנות אלינו לבקשה לעיון, תיקון או מחיקה של מידע אישי, וכן לשאלות לגבי פרטיות.'
+      },
+      contact: {
+        title: 'יצירת קשר',
+        description: 'לשאלות/בקשות בנושא פרטיות:',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'טלפון: +972544449109'
+      }
+    },
+    accessibility: {
+      title: 'הצהרת נגישות',
+      lastUpdated: 'עודכן לאחרונה',
+      intro: 'אנו, איץ גי אר סמארטפון בע"מ / HGR SMARTPHONE LTD (ח.פ. 517233995), כתובת: אלוני ניסים 6, תל אביב–יפו, רואים חשיבות בהנגשת האתר לשימוש נוח עבור כלל המשתמשים, כולל אנשים עם מוגבלויות.',
+      efforts: {
+        title: 'מאמצי נגישות',
+        description: 'אנחנו שואפים לעמוד בעקרונות הנגישות המקובלים ולהתאים את האתר להנחיות תקן WCAG 2.1 ברמה AA ככל הניתן, בין היתר באמצעות:',
+        items: [
+          'מבנה תוכן ברור וכותרות מסודרות',
+          'אפשרות ניווט באמצעות מקלדת (ככל שנתמך)',
+          'שימוש בטקסטים קריאים ותוויות לשדות בטפסים',
+          'התאמה למסכים שונים (רספונסיביות)'
+        ]
+      },
+      thirdParty: {
+        title: 'רכיבי צד ג\' (תשלום/WhatsApp)',
+        description: 'חלק מהפעולות באתר מתבצעות באמצעות שירותים חיצוניים:',
+        items: [
+          'iframe לתשלום (למשל Tranzila)',
+          'מעבר ל-WhatsApp לצורך יצירת קשר'
+        ],
+        note: 'רכיבים אלו נשלטים על ידי ספקים חיצוניים, ולכן ייתכנו מגבלות נגישות שאינן בשליטתנו.'
+      },
+      contact: {
+        title: 'פנייה בנושא נגישות',
+        description: 'אם נתקלתם בקושי נגישות באתר, נשמח שתפנו אלינו ונעשה מאמץ לטפל:',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'טלפון: +972544449109',
+        note: 'נא לציין בפנייה:',
+        noteItems: [
+          'מה הבעיה ומה ניסיתם לעשות',
+          'באיזה עמוד מדובר',
+          'סוג מכשיר/דפדפן (אם אפשר)'
+        ]
+      }
     }
   },
   en: {
@@ -222,6 +401,17 @@ export const translations = {
       gallery: 'Gallery',
       contact: 'Contact',
       servicePayment: 'Service Payment'
+    },
+    footer: {
+      companyName: 'HGR SMARTPHONE LTD',
+      companyNameEn: 'HGR SMARTPHONE LTD',
+      companyNumber: 'Company No.: 517233995',
+      address: '6 Aloni Nissim Street, Tel Aviv-Yafo',
+      links: 'Links',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Use',
+      accessibility: 'Accessibility Statement',
+      rights: 'All rights reserved.'
     },
     home: {
       welcome: 'Welcome to Smartpone',
@@ -427,6 +617,174 @@ export const translations = {
       phone: 'Phone',
       arrivalDate: 'Arrival Date',
       workplace: 'Workplace'
+    },
+    termsOfUse: {
+      title: 'Terms of Use',
+      lastUpdated: 'Last Updated',
+      general: {
+        title: 'General',
+        welcome: 'Welcome to the website of HGR SMARTPHONE LTD (Company No. 517233995), Address: 6 Aloni Nissim Street, Tel Aviv-Yafo ("the Company", "we").',
+        agreement: 'Use of the website, filling out forms, opening a WhatsApp conversation and/or making a payment constitutes agreement to these terms of use and the privacy policy.'
+      },
+      service: {
+        title: 'The Service',
+        description: 'The website allows filling in details for receiving a service/payment for a service we provide, as well as quick contact with the business.'
+      },
+      userResponsibility: {
+        title: 'User Responsibility',
+        description: 'The user undertakes to provide correct and accurate details. Providing incorrect details may cause delay/failure to provide service.'
+      },
+      payment: {
+        title: 'Payment and Processing',
+        point1: 'Payment may be made through an external payment processor (e.g., Tranzila) within an iframe.',
+        point2: 'Credit card details are entered only with the payment processor; the Company does not store card details.',
+        point3: 'Approval/rejection of the transaction is determined by the payment processor/credit card company.'
+      },
+      whatsapp: {
+        title: 'Contact via WhatsApp',
+        description: 'If you choose to contact us via WhatsApp, the conversation is conducted through WhatsApp/Meta and is subject to their terms and policies. The Company will endeavor to respond promptly during business hours, but there is no commitment to response time.'
+      },
+      availability: {
+        title: 'Website Availability and Changes',
+        description: 'The Company may change, update or discontinue parts of the website/service at its discretion. Availability issues or maintenance may occur.'
+      },
+      intellectualProperty: {
+        title: 'Intellectual Property',
+        description: 'All content on the website (texts, design, logo, etc.) belongs to the Company or third parties who have authorized use. Do not copy/distribute without permission.'
+      },
+      liability: {
+        title: 'Limitation of Liability',
+        description: 'Use of the website is "as is" (AS IS). The Company shall not be liable for indirect/consequential damages arising from use of the website, subject to applicable law.'
+      },
+      jurisdiction: {
+        title: 'Law and Jurisdiction',
+        description: 'These terms shall be governed by the laws of the State of Israel. Exclusive jurisdiction shall be in the competent courts of the Tel Aviv District.'
+      },
+      contact: {
+        title: 'Contact',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'Phone: +972544449109'
+      }
+    },
+    privacyPolicy: {
+      title: 'Privacy Policy',
+      lastUpdated: 'Last Updated',
+      whoWeAre: {
+        title: 'Who We Are',
+        description: 'HGR SMARTPHONE LTD (Company No. 517233995), Address: 6 Aloni Nissim Street, Tel Aviv-Yafo ("the Company", "we"), operates this website and the services offered on it.'
+      },
+      whatThisCovers: {
+        title: 'What This Policy Covers',
+        description: 'This policy explains what information we collect when you use the website/leave details/open a WhatsApp conversation/make a payment, why we use it, who we share it with, and how you can contact us regarding privacy.'
+      },
+      whatWeCollect: {
+        title: 'What Information We Collect',
+        directInfo: {
+          title: 'Information You Provide to Us Directly:',
+          items: [
+            'Full name',
+            'Phone number (in Israeli format)',
+            'Passport number',
+            'Workplace',
+            'Additional details you choose to provide in messages/forms'
+          ]
+        },
+        technicalInfo: {
+          title: 'Technical and Usage Information (Automatic):',
+          description: 'IP address, browser/device type, pages visited on the website, date and time',
+          additional: 'Sometimes referrer (where you came from) and security/log data'
+        },
+        paymentInfo: {
+          title: 'Payment Information:',
+          point1: 'Payment is made through an external payment processor (e.g., Tranzila) within an iframe.',
+          point2: 'Credit card details are entered only with the payment processor. We do not store the card number/CVV code with us.'
+        }
+      },
+      whyWeUse: {
+        title: 'Why We Use the Information',
+        description: 'We use the information to:',
+        items: [
+          'Provide you with the service you requested',
+          'Display/generate appropriate payment and manage the order',
+          'Contact you, provide support and customer service (including via WhatsApp)',
+          'Perform operational documentation and quality control, fraud prevention and information security',
+          'Improve the website and experience'
+        ]
+      },
+      whatsapp: {
+        title: 'WhatsApp and Communication',
+        description: 'If you choose to open a WhatsApp conversation with the business, communication is conducted through WhatsApp/Meta and is subject to their policies and terms. We may record a "WhatsApp inquiry/click" along with the form details you filled out to handle your request.'
+      },
+      sharing: {
+        title: 'Sharing Information with Third Parties',
+        description: 'We may share information as necessary to provide the service, including with:',
+        items: [
+          'Payment processor (e.g., Tranzila) for payment processing and result verification',
+          'Infrastructure/storage providers (e.g., Supabase/Netlify) for data storage and website operation',
+          'CRM system to which we sync inquiries/orders for service and process management',
+          'Business communication (WhatsApp Business) for response and support',
+          'Internal notifications (e.g., Telegram) so we can quickly handle inquiries/payments'
+        ],
+        note: 'We will not sell personal information to third parties.'
+      },
+      retention: {
+        title: 'Information Retention',
+        description: 'We will retain information only as long as necessary for the purposes set forth in this policy, and according to legal/documentation/legal defense requirements. If you wish to delete information – you can contact us (see "Contact").'
+      },
+      security: {
+        title: 'Information Security',
+        description: 'We take reasonable measures to protect information (such as access restrictions, secret keys on the server side, and logs for security purposes). However, no system is completely immune and we cannot guarantee absolute security.'
+      },
+      transfer: {
+        title: 'Transfer of Information Outside Israel',
+        description: 'Some of our providers may process/store information in other countries. We work to use recognized providers and protect information through accepted means.'
+      },
+      rights: {
+        title: 'Rights and Requests',
+        description: 'You can contact us to request access, correction or deletion of personal information, as well as questions regarding privacy.'
+      },
+      contact: {
+        title: 'Contact',
+        description: 'For questions/requests regarding privacy:',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'Phone: +972544449109'
+      }
+    },
+    accessibility: {
+      title: 'Accessibility Statement',
+      lastUpdated: 'Last Updated',
+      intro: 'We, HGR SMARTPHONE LTD (Company No. 517233995), Address: 6 Aloni Nissim Street, Tel Aviv-Yafo, see importance in making the website accessible for convenient use by all users, including people with disabilities.',
+      efforts: {
+        title: 'Accessibility Efforts',
+        description: 'We strive to meet accepted accessibility principles and adapt the website to WCAG 2.1 Level AA guidelines as much as possible, including through:',
+        items: [
+          'Clear content structure and organized headings',
+          'Keyboard navigation capability (as supported)',
+          'Use of readable texts and labels for form fields',
+          'Adaptation to different screens (responsiveness)'
+        ]
+      },
+      thirdParty: {
+        title: 'Third-Party Components (Payment/WhatsApp)',
+        description: 'Some actions on the website are performed through external services:',
+        items: [
+          'Payment iframe (e.g., Tranzila)',
+          'Transition to WhatsApp for contact'
+        ],
+        note: 'These components are controlled by external providers, and therefore there may be accessibility limitations that are not under our control.'
+      },
+      contact: {
+        title: 'Accessibility Inquiry',
+        description: 'If you encountered an accessibility difficulty on the website, we would be happy for you to contact us and we will make an effort to address it:',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'Phone: +972544449109',
+        note: 'Please specify in your inquiry:',
+        noteItems: [
+          'What the problem is and what you tried to do',
+          'Which page it concerns',
+          'Device/browser type (if possible)'
+        ]
+      }
     }
   },
   th: {
@@ -437,6 +795,17 @@ export const translations = {
       gallery: 'แกลเลอรี',
       contact: 'ติดต่อ',
       servicePayment: 'ชำระเงินสำหรับบริการ'
+    },
+    footer: {
+      companyName: 'HGR SMARTPHONE LTD',
+      companyNameEn: 'HGR SMARTPHONE LTD',
+      companyNumber: 'หมายเลขบริษัท: 517233995',
+      address: '6 ถนน Aloni Nissim, Tel Aviv-Yafo',
+      links: 'ลิงก์',
+      privacy: 'นโยบายความเป็นส่วนตัว',
+      terms: 'ข้อกำหนดการใช้งาน',
+      accessibility: 'คำแถลงการเข้าถึง',
+      rights: 'สงวนลิขสิทธิ์.'
     },
     home: {
       welcome: 'ยินดีต้อนรับสู่ Smartpone',
@@ -642,6 +1011,174 @@ export const translations = {
       phone: 'โทรศัพท์',
       arrivalDate: 'วันที่มาถึง',
       workplace: 'สถานที่ทำงาน'
+    },
+    termsOfUse: {
+      title: 'ข้อกำหนดการใช้งาน',
+      lastUpdated: 'อัปเดตล่าสุด',
+      general: {
+        title: 'ทั่วไป',
+        welcome: 'ยินดีต้อนรับสู่เว็บไซต์ของ HGR SMARTPHONE LTD (หมายเลขบริษัท 517233995) ที่อยู่: 6 ถนน Aloni Nissim, Tel Aviv-Yafo ("บริษัท", "เรา")',
+        agreement: 'การใช้เว็บไซต์ การกรอกแบบฟอร์ม การเปิดการสนทนา WhatsApp และ/หรือการชำระเงินถือเป็นการยอมรับข้อกำหนดการใช้งานเหล่านี้และนโยบายความเป็นส่วนตัว'
+      },
+      service: {
+        title: 'บริการ',
+        description: 'เว็บไซต์อนุญาตให้กรอกข้อมูลเพื่อรับบริการ/ชำระเงินสำหรับบริการที่เรามีให้ รวมถึงการติดต่ออย่างรวดเร็วกับธุรกิจ'
+      },
+      userResponsibility: {
+        title: 'ความรับผิดชอบของผู้ใช้',
+        description: 'ผู้ใช้ตกลงที่จะให้ข้อมูลที่ถูกต้องและแม่นยำ การให้ข้อมูลที่ไม่ถูกต้องอาจทำให้เกิดความล่าช้า/ไม่สามารถให้บริการได้'
+      },
+      payment: {
+        title: 'การชำระเงินและการประมวลผล',
+        point1: 'การชำระเงินอาจทำผ่านผู้ประมวลผลการชำระเงินภายนอก (เช่น Tranzila) ภายใน iframe',
+        point2: 'รายละเอียดบัตรเครดิตจะถูกป้อนกับผู้ประมวลผลการชำระเงินเท่านั้น บริษัทไม่เก็บรายละเอียดบัตร',
+        point3: 'การอนุมัติ/ปฏิเสธธุรกรรมจะถูกกำหนดโดยผู้ประมวลผลการชำระเงิน/บริษัทบัตรเครดิต'
+      },
+      whatsapp: {
+        title: 'ติดต่อผ่าน WhatsApp',
+        description: 'หากคุณเลือกติดต่อเราผ่าน WhatsApp การสนทนาจะดำเนินการผ่าน WhatsApp/Meta และอยู่ภายใต้ข้อกำหนดและนโยบายของพวกเขา บริษัทจะพยายามตอบกลับโดยเร็วที่สุดในช่วงเวลาทำการ แต่ไม่มีการรับประกันเวลาในการตอบกลับ'
+      },
+      availability: {
+        title: 'ความพร้อมใช้งานของเว็บไซต์และการเปลี่ยนแปลง',
+        description: 'บริษัทอาจเปลี่ยนแปลง อัปเดต หรือหยุดส่วนต่างๆ ของเว็บไซต์/บริการตามดุลยพินิจ อาจเกิดปัญหาความพร้อมใช้งานหรือการบำรุงรักษา'
+      },
+      intellectualProperty: {
+        title: 'ทรัพย์สินทางปัญญา',
+        description: 'เนื้อหาทั้งหมดบนเว็บไซต์ (ข้อความ การออกแบบ โลโก้ ฯลฯ) เป็นของบริษัทหรือบุคคลที่สามที่ได้รับอนุญาตให้ใช้งาน ห้ามคัดลอก/แจกจ่ายโดยไม่ได้รับอนุญาต'
+      },
+      liability: {
+        title: 'ข้อจำกัดความรับผิดชอบ',
+        description: 'การใช้เว็บไซต์เป็น "ตามที่เป็น" (AS IS) บริษัทจะไม่รับผิดชอบต่อความเสียหายทางอ้อม/ผลที่ตามมาที่เกิดจากการใช้เว็บไซต์ ตามกฎหมายที่ใช้บังคับ'
+      },
+      jurisdiction: {
+        title: 'กฎหมายและเขตอำนาจศาล',
+        description: 'ข้อกำหนดเหล่านี้จะอยู่ภายใต้กฎหมายของรัฐอิสราเอล เขตอำนาจศาลเฉพาะจะเป็นของศาลที่มีอำนาจในเขต Tel Aviv'
+      },
+      contact: {
+        title: 'ติดต่อ',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'โทรศัพท์: +972544449109'
+      }
+    },
+    privacyPolicy: {
+      title: 'นโยบายความเป็นส่วนตัว',
+      lastUpdated: 'อัปเดตล่าสุด',
+      whoWeAre: {
+        title: 'เราเป็นใคร',
+        description: 'HGR SMARTPHONE LTD (หมายเลขบริษัท 517233995) ที่อยู่: 6 ถนน Aloni Nissim, Tel Aviv-Yafo ("บริษัท", "เรา") ดำเนินการเว็บไซต์นี้และบริการที่เสนอบนเว็บไซต์'
+      },
+      whatThisCovers: {
+        title: 'นโยบายนี้ครอบคลุมอะไร',
+        description: 'นโยบายนี้อธิบายว่าข้อมูลใดที่เรารวบรวมเมื่อคุณใช้เว็บไซต์/กรอกข้อมูล/เปิดการสนทนา WhatsApp/ชำระเงิน เหตุใดเราจึงใช้ข้อมูลนั้น เราแชร์กับใคร และคุณสามารถติดต่อเราเกี่ยวกับความเป็นส่วนตัวได้อย่างไร'
+      },
+      whatWeCollect: {
+        title: 'ข้อมูลใดที่เรารวบรวม',
+        directInfo: {
+          title: 'ข้อมูลที่คุณให้กับเราโดยตรง:',
+          items: [
+            'ชื่อเต็ม',
+            'หมายเลขโทรศัพท์ (รูปแบบอิสราเอล)',
+            'หมายเลขหนังสือเดินทาง',
+            'สถานที่ทำงาน',
+            'รายละเอียดเพิ่มเติมที่คุณเลือกให้ในข้อความ/แบบฟอร์ม'
+          ]
+        },
+        technicalInfo: {
+          title: 'ข้อมูลทางเทคนิคและการใช้งาน (อัตโนมัติ):',
+          description: 'ที่อยู่ IP ประเภทเบราว์เซอร์/อุปกรณ์ หน้าที่เยี่ยมชมบนเว็บไซต์ วันที่และเวลา',
+          additional: 'บางครั้ง referrer (ที่คุณมาจาก) และข้อมูลความปลอดภัย/บันทึก'
+        },
+        paymentInfo: {
+          title: 'ข้อมูลการชำระเงิน:',
+          point1: 'การชำระเงินทำผ่านผู้ประมวลผลการชำระเงินภายนอก (เช่น Tranzila) ภายใน iframe',
+          point2: 'รายละเอียดบัตรเครดิตจะถูกป้อนกับผู้ประมวลผลการชำระเงินเท่านั้น เราไม่เก็บหมายเลขบัตร/รหัส CVV กับเรา'
+        }
+      },
+      whyWeUse: {
+        title: 'เหตุใดเราจึงใช้ข้อมูล',
+        description: 'เราใช้ข้อมูลเพื่อ:',
+        items: [
+          'ให้บริการที่คุณร้องขอ',
+          'แสดง/สร้างการชำระเงินที่เหมาะสมและจัดการคำสั่งซื้อ',
+          'ติดต่อคุณ ให้การสนับสนุนและบริการลูกค้า (รวมถึงผ่าน WhatsApp)',
+          'ดำเนินการเอกสารการดำเนินงานและการควบคุมคุณภาพ การป้องกันการฉ้อโกงและความปลอดภัยของข้อมูล',
+          'ปรับปรุงเว็บไซต์และประสบการณ์'
+        ]
+      },
+      whatsapp: {
+        title: 'WhatsApp และการสื่อสาร',
+        description: 'หากคุณเลือกเปิดการสนทนา WhatsApp กับธุรกิจ การสื่อสารจะดำเนินการผ่าน WhatsApp/Meta และอยู่ภายใต้นโยบายและข้อกำหนดของพวกเขา เราอาจบันทึก "การสอบถาม/คลิก WhatsApp" พร้อมกับรายละเอียดแบบฟอร์มที่คุณกรอกเพื่อจัดการคำขอของคุณ'
+      },
+      sharing: {
+        title: 'การแชร์ข้อมูลกับบุคคลที่สาม',
+        description: 'เราอาจแชร์ข้อมูลตามความจำเป็นในการให้บริการ รวมถึงกับ:',
+        items: [
+          'ผู้ประมวลผลการชำระเงิน (เช่น Tranzila) สำหรับการประมวลผลการชำระเงินและการยืนยันผลลัพธ์',
+          'ผู้ให้บริการโครงสร้างพื้นฐาน/ที่เก็บข้อมูล (เช่น Supabase/Netlify) สำหรับการจัดเก็บข้อมูลและการดำเนินการเว็บไซต์',
+          'ระบบ CRM ที่เราซิงค์การสอบถาม/คำสั่งซื้อสำหรับบริการและการจัดการกระบวนการ',
+          'การสื่อสารทางธุรกิจ (WhatsApp Business) สำหรับการตอบกลับและการสนับสนุน',
+          'การแจ้งเตือนภายใน (เช่น Telegram) เพื่อให้เราสามารถจัดการการสอบถาม/การชำระเงินได้อย่างรวดเร็ว'
+        ],
+        note: 'เราจะไม่ขายข้อมูลส่วนบุคคลให้กับบุคคลที่สาม'
+      },
+      retention: {
+        title: 'การเก็บรักษาข้อมูล',
+        description: 'เราจะเก็บรักษาข้อมูลเฉพาะเท่าที่จำเป็นสำหรับวัตถุประสงค์ที่ระบุไว้ในนโยบายนี้ และตามข้อกำหนดทางกฎหมาย/เอกสาร/การป้องกันทางกฎหมาย หากคุณต้องการลบข้อมูล – คุณสามารถติดต่อเรา (ดู "ติดต่อ")'
+      },
+      security: {
+        title: 'ความปลอดภัยของข้อมูล',
+        description: 'เราใช้มาตรการที่สมเหตุสมผลเพื่อปกป้องข้อมูล (เช่น การจำกัดการเข้าถึง คีย์ลับฝั่งเซิร์ฟเวอร์ และบันทึกเพื่อวัตถุประสงค์ด้านความปลอดภัย) อย่างไรก็ตาม ไม่มีระบบใดที่ปลอดภัยอย่างสมบูรณ์และเราไม่สามารถรับประกันความปลอดภัยที่สมบูรณ์ได้'
+      },
+      transfer: {
+        title: 'การถ่ายโอนข้อมูลนอกอิสราเอล',
+        description: 'ผู้ให้บริการบางรายของเราอาจประมวลผล/จัดเก็บข้อมูลในประเทศอื่นๆ เราพยายามใช้ผู้ให้บริการที่ได้รับการยอมรับและปกป้องข้อมูลด้วยวิธีการที่ยอมรับได้'
+      },
+      rights: {
+        title: 'สิทธิ์และการร้องขอ',
+        description: 'คุณสามารถติดต่อเราเพื่อขอเข้าถึง แก้ไข หรือลบข้อมูลส่วนบุคคล รวมถึงคำถามเกี่ยวกับความเป็นส่วนตัว'
+      },
+      contact: {
+        title: 'ติดต่อ',
+        description: 'สำหรับคำถาม/คำขอเกี่ยวกับความเป็นส่วนตัว:',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'โทรศัพท์: +972544449109'
+      }
+    },
+    accessibility: {
+      title: 'คำแถลงการเข้าถึง',
+      lastUpdated: 'อัปเดตล่าสุด',
+      intro: 'เรา HGR SMARTPHONE LTD (หมายเลขบริษัท 517233995) ที่อยู่: 6 ถนน Aloni Nissim, Tel Aviv-Yafo เห็นความสำคัญในการทำให้เว็บไซต์เข้าถึงได้เพื่อการใช้งานที่สะดวกสำหรับผู้ใช้ทุกคน รวมถึงผู้ที่มีความพิการ',
+      efforts: {
+        title: 'ความพยายามในการเข้าถึง',
+        description: 'เราพยายามปฏิบัติตามหลักการเข้าถึงที่ยอมรับและปรับเว็บไซต์ให้สอดคล้องกับแนวทาง WCAG 2.1 ระดับ AA เท่าที่เป็นไปได้ รวมถึงผ่าน:',
+        items: [
+          'โครงสร้างเนื้อหาที่ชัดเจนและหัวข้อที่จัดระเบียบ',
+          'ความสามารถในการนำทางด้วยแป้นพิมพ์ (ตามที่รองรับ)',
+          'การใช้ข้อความที่อ่านได้และป้ายกำกับสำหรับช่องฟอร์ม',
+          'การปรับให้เข้ากับหน้าจอต่างๆ (การตอบสนอง)'
+        ]
+      },
+      thirdParty: {
+        title: 'ส่วนประกอบของบุคคลที่สาม (การชำระเงิน/WhatsApp)',
+        description: 'การกระทำบางอย่างบนเว็บไซต์ดำเนินการผ่านบริการภายนอก:',
+        items: [
+          'iframe การชำระเงิน (เช่น Tranzila)',
+          'การเปลี่ยนไปใช้ WhatsApp เพื่อติดต่อ'
+        ],
+        note: 'ส่วนประกอบเหล่านี้ถูกควบคุมโดยผู้ให้บริการภายนอก และดังนั้นอาจมีข้อจำกัดในการเข้าถึงที่ไม่อยู่ภายใต้การควบคุมของเรา'
+      },
+      contact: {
+        title: 'การสอบถามเกี่ยวกับการเข้าถึง',
+        description: 'หากคุณพบปัญหาการเข้าถึงบนเว็บไซต์ เรายินดีให้คุณติดต่อเราและเราจะพยายามแก้ไข:',
+        whatsapp: 'WhatsApp: +972544449109',
+        phone: 'โทรศัพท์: +972544449109',
+        note: 'กรุณาระบุในการสอบถามของคุณ:',
+        noteItems: [
+          'ปัญหาคืออะไรและคุณพยายามทำอะไร',
+          'หน้าใดที่เกี่ยวข้อง',
+          'ประเภทอุปกรณ์/เบราว์เซอร์ (ถ้าเป็นไปได้)'
+        ]
+      }
     }
   }
 }
